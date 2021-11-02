@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.RegisterFragment"
+    android:background="@color/littleBgLogIn"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/logInPadding">
+
+        <TextView
+            android:id="@+id/textViewRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/editTextFullName"
+            android:text="@string/register"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/titleTextSize"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextFullName"
+            style="@style/cutomEditTextOutside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewRegister"
+            app:layout_constraintBottom_toTopOf="@id/editTextLastName"
+            android:layout_marginTop="@dimen/marginCustomEditText"
+            android:hint="@string/fullName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/customEditTextInside"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextLastName"
+            style="@style/cutomEditTextOutside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextFullName"
+            app:layout_constraintBottom_toTopOf="@id/editTextEmailRegister"
+            android:layout_marginTop="@dimen/marginCustomEditText"
+            android:hint="@string/lastName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/customEditTextInside"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextEmailRegister"
+            style="@style/cutomEditTextOutside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextLastName"
+            app:layout_constraintBottom_toTopOf="@id/editTextPasswordRegister"
+            android:layout_marginTop="@dimen/marginCustomEditText"
+            android:hint="@string/email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/customEditTextInside"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextPasswordRegister"
+            style="@style/cutomEditTextOutside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextEmailRegister"
+            app:layout_constraintBottom_toTopOf="@id/buttonRegister"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@android:color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/customEditTextInside"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textViewLogInRegister"
+            app:layout_constraintTop_toBottomOf="@id/editTextPasswordRegister"
+            android:text="@string/register"
+            android:textSize="@dimen/textSize"
+            android:background="@drawable/blue_button_bg"
+            android:layout_marginTop="@dimen/marginCustomEditText"
+            android:layout_marginBottom="@dimen/marginCustomEditText"/>
+
+        <TextView
+            android:id="@+id/textViewRegisterQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textViewLogInRegister"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonRegister"
+            android:text="@string/already"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textViewLogInRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textViewRegisterQ"
+            app:layout_constraintBottom_toBottomOf="@id/textViewRegisterQ"
+            app:layout_constraintTop_toTopOf="@id/textViewRegisterQ"
+            android:text="@string/login"
+            android:textColor="@color/mainBlue"
+            android:textSize="@dimen/textSize"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

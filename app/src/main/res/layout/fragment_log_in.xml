@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.LogInFragment"
+    android:background="@color/littleBgLogIn"
+    android:padding="@dimen/logInPadding">
+
+    <TextView
+        android:id="@+id/textViewLogIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editTextEmailLogIn"
+        android:text="@string/login"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextEmailLogIn"
+        style="@style/cutomEditTextOutside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewLogIn"
+        app:layout_constraintBottom_toTopOf="@id/editTextPasswordLogIn"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:hint="@string/email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/customEditTextInside"
+            android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPasswordLogIn"
+        style="@style/cutomEditTextOutside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextEmailLogIn"
+        app:layout_constraintBottom_toTopOf="@id/buttonLogIn"
+        android:hint="@string/password"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@android:color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+             style="@style/customEditTextInside"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextPasswordLogIn"
+        app:layout_constraintBottom_toTopOf="@id/textViewForgetPwdQ"
+        android:text="@string/login"
+        android:textSize="@dimen/textSize"
+        android:background="@drawable/blue_button_bg"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:layout_marginBottom="@dimen/marginCustomEditText"/>
+
+    <TextView
+        android:id="@+id/textViewForgetPwdQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textViewClickHere"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogIn"
+        app:layout_constraintBottom_toTopOf="@id/separator"
+        android:text="@string/forgotPasswordQ"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textViewClickHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewForgetPwdQ"
+        app:layout_constraintBottom_toBottomOf="@id/textViewForgetPwdQ"
+        app:layout_constraintTop_toTopOf="@id/textViewForgetPwdQ"
+        android:text="@string/clickHere"
+        android:textColor="@color/mainBlue"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separatorHigh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewForgetPwdQ"
+        app:layout_constraintBottom_toTopOf="@id/textViewNewTo"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/textViewNewTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator"
+        app:layout_constraintBottom_toTopOf="@id/buttonSignUp"
+        android:text="@string/newTo"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/littleTextSize"
+        android:layout_marginTop="@dimen/marginCustomEditText"/>
+
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNewTo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/signUp"
+        android:textSize="@dimen/textSize"
+        android:textColor="@android:color/white"
+        android:background="@drawable/gray_button_bg"
+        android:layout_marginTop="@dimen/marginCustomEditText"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

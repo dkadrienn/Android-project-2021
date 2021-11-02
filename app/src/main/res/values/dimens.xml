@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="miniLogoMarginTop">20dp</dimen>
+    <dimen name="textSize">20sp</dimen>
+    <dimen name="titleTextSize">25sp</dimen>
+    <dimen name="littleTextSize">16sp</dimen>
+    <dimen name="logInPadding">50dp</dimen>
+    <dimen name="buttonPadding">10dp</dimen>
+    <dimen name="buttonRadius">50dp</dimen>
+    <dimen name="simpleButtonStroke">3dp</dimen>
+    <dimen name="separatorHigh">1dp</dimen>
+    <dimen name="marginCustomEditText">30dp</dimen>
+    <dimen name="fragmentMargin">20dp</dimen>
+</resources>
