@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Bazaar</string>
+    <string name="login">Log in</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="emailMe">Email me</string>
+    <string name="password">Password</string>
+    <string name="forgotPasswordQ">Forget password?</string>
+    <string name="clickHere">Click here</string>
+    <string name="newTo">New to Bazaar?</string>
+    <string name="signUp">Sign up</string>
+    <string name="forgotPassword">Forgot password</string>
+    <string name="forgotPwdText">We will send you an email with instructions on how to reset your password.</string>
+    <string name="already">Already have an account?</string>
+    <string name="fullName">Full name</string>
+    <string name="lastName">Last name</string>
+</resources>
