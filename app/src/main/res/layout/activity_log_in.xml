@@ -32,5 +32,4 @@
         app:navGraph="@navigation/navigation"
         android:layout_margin="@dimen/fragmentMargin"
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

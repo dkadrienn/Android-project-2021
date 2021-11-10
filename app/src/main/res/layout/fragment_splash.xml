@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.SplashFragment"
+    android:background="@color/littleBgLogIn">
+
+    <ImageView
+        android:id="@+id/splashLogoUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_splashup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/splashLogoDown"
+        android:layout_marginTop="@dimen/marginTopSplash" />
+
+    <ImageView
+        android:id="@+id/splashLogoDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_splashdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splashLogoUp"
+        app:layout_constraintBottom_toTopOf="@id/textViewSplash"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/splashSpace"/>
+
+    <TextView
+        android:id="@+id/textViewSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/splashText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splashLogoDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textViewPoweredBy"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/titleTextSize"/>
+
+    <TextView
+        android:id="@+id/textViewPoweredBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poweredBy"
+        app:layout_constraintStart_toStartOf="@id/textViewSplash"
+        app:layout_constraintTop_toBottomOf="@id/textViewSplash"
+        app:layout_constraintEnd_toStartOf="@id/splashLogo"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/splashLittleSpace"/>
+
+    <ImageView
+        android:id="@+id/splashLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/textViewPoweredBy"
+        app:layout_constraintEnd_toEndOf="@id/textViewSplash"
+        app:layout_constraintTop_toTopOf="@id/textViewPoweredBy"
+        android:src="@drawable/ic_3ss_logo"
+        app:layout_constraintBottom_toBottomOf="@id/textViewPoweredBy"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

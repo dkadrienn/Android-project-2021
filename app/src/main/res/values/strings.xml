@@ -14,4 +14,6 @@
     <string name="already">Already have an account?</string>
     <string name="fullName">Full name</string>
     <string name="lastName">Last name</string>
+    <string name="splashText">Small Fare - Big Life</string>
+    <string name="poweredBy">POWERED BY</string>
 </resources>
