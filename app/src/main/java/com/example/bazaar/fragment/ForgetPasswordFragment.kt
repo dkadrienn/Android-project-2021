@@ -4,57 +4,56 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.bazaar.R
+import com.example.bazaar.model.PasswordReset
+import com.example.bazaar.repository.MarketRepository
+import com.example.bazaar.viewmodel.PasswordResetViewModel
+import com.example.bazaar.viewmodel.PasswordResetViewModelFactory
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ForgetPasswordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ForgetPasswordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var passwordResetViewModel: PasswordResetViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        val factory = PasswordResetViewModelFactory(this.requireContext(), MarketRepository())
+        passwordResetViewModel = ViewModelProvider(this, factory).get(PasswordResetViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forget_password, container, false)
+        val view = inflater.inflate(R.layout.fragment_forget_password, container, false)
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ForgetPasswordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ForgetPasswordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val buttonReset = view.findViewById<Button>(R.id.buttonForgotPwd)
+        val editTextEmailLogIn = view.findViewById<EditText>(R.id.editTextEmailLogIn)
+//        val editTextEmailLogIn = view.findViewById<EditText>(R.id.editTextEmailLogIn)
+        buttonReset.setOnClickListener {
+            passwordResetViewModel.passwordReset.value.let {
+//                if (it != null) {
+//                    it.username = editText1.text.toString()
+//                }
+                if (it != null) {
+                    it.email = editTextEmailLogIn.text.toString()
                 }
             }
+            lifecycleScope.launch {
+                passwordResetViewModel.passwordReset()
+
+            }
+//            loginViewModel.token.observe(viewLifecycleOwner){
+//                findNavController().navigate(R.id.action_loginFragment_to_listFragment)
+//            }
+        }
     }
 }
