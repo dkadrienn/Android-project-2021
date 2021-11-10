@@ -27,7 +27,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextFullName"
-            style="@style/cutomEditTextOutside"
+            style="@style/customEditTextOutside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewRegister"
@@ -43,7 +43,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextLastName"
-            style="@style/cutomEditTextOutside"
+            style="@style/customEditTextOutside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTextFullName"
@@ -59,7 +59,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextEmailRegister"
-            style="@style/cutomEditTextOutside"
+            style="@style/customEditTextOutside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTextLastName"
@@ -75,7 +75,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextPasswordRegister"
-            style="@style/cutomEditTextOutside"
+            style="@style/customEditTextOutside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTextEmailRegister"

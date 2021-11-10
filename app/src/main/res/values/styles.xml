@@ -1,19 +1,19 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="cutomEditTextOutside" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+<!--    Theme.MaterialComponents.DayNight.NoActionBar.Bridge-->
+    <style name="customEditTextOutside" parent="Theme.MaterialComponents.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColorHint">@color/lighterGray</item>
         <item name="boxStrokeColor">@color/mainBlue</item>
         <item name="android:layout_marginTop">@dimen/marginCustomEditText</item>
-        <!--        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>-->
     </style>
 
     <style name="customEditTextInside">

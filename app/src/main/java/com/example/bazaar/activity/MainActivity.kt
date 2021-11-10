@@ -1,7 +1,7 @@
 package com.example.bazaar.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bazaar.R
 
 class MainActivity : AppCompatActivity() {
