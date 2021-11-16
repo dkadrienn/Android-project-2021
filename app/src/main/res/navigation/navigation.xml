@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_logInFragment_to_forgetPasswordFragment"
             app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_timelineFragment"
+            app:destination="@id/timelineFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"
@@ -44,4 +47,9 @@
             android:id="@+id/action_registerFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/timelineFragment"
+        android:name="com.example.bazaar.fragment.TimelineFragment"
+        android:label="fragment_timeline"
+        tools:layout="@layout/fragment_timeline" />
 </navigation>

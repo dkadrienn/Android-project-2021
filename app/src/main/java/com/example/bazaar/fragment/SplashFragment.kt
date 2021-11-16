@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.bazaar.R
@@ -24,7 +25,8 @@ class SplashFragment : Fragment(), Animation.AnimationListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
-
+        val imageLogo = view.findViewById<ImageView>(R.id.imageViewMiniLogo)
+        imageLogo.visibility = View.INVISIBLE
         return view
     }
 

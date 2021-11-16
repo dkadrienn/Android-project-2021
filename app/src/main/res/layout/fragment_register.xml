@@ -19,39 +19,24 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/editTextFullName"
+            app:layout_constraintBottom_toTopOf="@id/editTextUsernameRegister"
             android:text="@string/register"
             android:textColor="@android:color/white"
             android:textSize="@dimen/titleTextSize"
             android:textStyle="bold"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextFullName"
+            android:id="@+id/editTextUsernameRegister"
             style="@style/customEditTextOutside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewRegister"
-            app:layout_constraintBottom_toTopOf="@id/editTextLastName"
-            android:layout_marginTop="@dimen/marginCustomEditText"
-            android:hint="@string/fullName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/customEditTextInside"
-                android:inputType="text"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextLastName"
-            style="@style/customEditTextOutside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextFullName"
             app:layout_constraintBottom_toTopOf="@id/editTextEmailRegister"
             android:layout_marginTop="@dimen/marginCustomEditText"
-            android:hint="@string/lastName">
+            android:hint="@string/username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameRegister"
                 style="@style/customEditTextInside"
                 android:inputType="text"/>
 
@@ -62,12 +47,13 @@
             style="@style/customEditTextOutside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextLastName"
+            app:layout_constraintTop_toBottomOf="@id/editTextUsernameRegister"
             app:layout_constraintBottom_toTopOf="@id/editTextPasswordRegister"
             android:layout_marginTop="@dimen/marginCustomEditText"
             android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailRegister"
                 style="@style/customEditTextInside"
                 android:inputType="textEmailAddress"/>
 
@@ -79,13 +65,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTextEmailRegister"
-            app:layout_constraintBottom_toTopOf="@id/buttonRegister"
+            app:layout_constraintBottom_toTopOf="@id/editTextPhoneNr"
             android:hint="@string/password"
             app:endIconMode="password_toggle"
             app:endIconTint="@android:color/white">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordRegister"
                 style="@style/customEditTextInside"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextPhoneNr"
+            style="@style/customEditTextOutside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextPasswordRegister"
+            app:layout_constraintBottom_toTopOf="@id/buttonRegister"
+            android:layout_marginTop="@dimen/marginCustomEditText"
+            android:hint="@string/phoneNr">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneNrRegister"
+                style="@style/customEditTextInside"
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +100,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/textViewLogInRegister"
-            app:layout_constraintTop_toBottomOf="@id/editTextPasswordRegister"
+            app:layout_constraintTop_toBottomOf="@id/editTextPhoneNr"
             android:text="@string/register"
             android:textSize="@dimen/textSize"
             android:background="@drawable/blue_button_bg"

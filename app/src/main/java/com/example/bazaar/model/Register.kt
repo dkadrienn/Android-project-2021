@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 import java.io.File
 
 data class Register(
-    val username : String="",
-    val password : String="",
-    val email : String="",
-    val phone_number : Int=0,
+    var username : String="",
+    var password : String="",
+    var email : String="",
+    var phone_number : Int=0,
     val firebase_token : String="token",
     val userImage : File? = null
 )
