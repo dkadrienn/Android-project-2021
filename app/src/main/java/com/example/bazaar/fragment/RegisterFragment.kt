@@ -43,8 +43,7 @@ class RegisterFragment : Fragment() {
         val textViewLogInRegister = view.findViewById<TextView>(R.id.textViewLogInRegister)
         textViewLogInRegister.setOnClickListener {
             Log.d(TAG, "Log in text clicked!")
-            Navigation.findNavController(view)
-                .navigate(R.id.action_registerFragment_to_logInFragment)
+            childFragmentManager.beginTransaction().replace(R.id.logFragment, LogInFragment()).addToBackStack(null).commit()
         }
 
         val buttonRegister = view.findViewById<Button>(R.id.buttonRegister)
@@ -71,8 +70,7 @@ class RegisterFragment : Fragment() {
                 registerViewModel.register()
 
             }
-            Navigation.findNavController(view)
-                .navigate(R.id.action_registerFragment_to_logInFragment)
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.logFragment, LogInFragment())?.addToBackStack(null)?.commit()
         }
     }
 }

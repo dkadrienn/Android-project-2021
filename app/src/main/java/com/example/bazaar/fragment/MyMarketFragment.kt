@@ -1,18 +1,16 @@
 package com.example.bazaar.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.bazaar.R
 
-class TimelineFragment : Fragment() {
+class MyMarketFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -20,6 +18,6 @@ class TimelineFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timeline, container, false)
+        return inflater.inflate(R.layout.fragment_my_market, container, false)
     }
 }

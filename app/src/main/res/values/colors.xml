@@ -8,4 +8,5 @@
     <color name="mainBlue">#08b4c4</color>
     <color name="lighterGray">#878787</color>
     <color name="error">#e13904</color>
+    <color name="transparent">#00000000</color>
 </resources>

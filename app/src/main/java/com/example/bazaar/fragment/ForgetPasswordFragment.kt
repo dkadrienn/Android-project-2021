@@ -10,12 +10,8 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import com.example.bazaar.R
-import com.example.bazaar.model.PasswordReset
 import com.example.bazaar.repository.MarketRepository
-import com.example.bazaar.viewmodel.LogInViewModel
-import com.example.bazaar.viewmodel.LogInViewModelFactory
 import com.example.bazaar.viewmodel.PasswordResetViewModel
 import com.example.bazaar.viewmodel.PasswordResetViewModelFactory
 import kotlinx.coroutines.launch
@@ -27,7 +23,8 @@ class ForgetPasswordFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = PasswordResetViewModelFactory(this.requireContext(), MarketRepository())
-        passwordResetViewModel = ViewModelProvider(this, factory).get(PasswordResetViewModel::class.java)
+        passwordResetViewModel =
+            ViewModelProvider(this, factory).get(PasswordResetViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -58,8 +55,9 @@ class ForgetPasswordFragment : Fragment() {
                 passwordResetViewModel.passwordReset()
 
             }
-            Navigation.findNavController(view)
-                .navigate(R.id.action_forgetPasswordFragment_to_logInFragment)
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.logFragment, LogInFragment())?.addToBackStack(null)
+                ?.commit()
         }
     }
 }

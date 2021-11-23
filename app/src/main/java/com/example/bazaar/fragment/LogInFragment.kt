@@ -1,5 +1,6 @@
 package com.example.bazaar.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,15 +12,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.bazaar.R
+import com.example.bazaar.activity.MainActivity
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.viewmodel.LogInViewModel
 import com.example.bazaar.viewmodel.LogInViewModelFactory
-import com.example.bazaar.viewmodel.PasswordResetViewModel
-import com.example.bazaar.viewmodel.PasswordResetViewModelFactory
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+
 
 class LogInFragment : Fragment() {
     val TAG = Class::class.java.simpleName
@@ -46,14 +46,14 @@ class LogInFragment : Fragment() {
         val buttonSignUp = view.findViewById<Button>(R.id.buttonSignUp)
         buttonSignUp.setOnClickListener {
             Log.d(TAG, "button signed up clicked!")
-            Navigation.findNavController(view)
-                .navigate(R.id.action_logInFragment_to_registerFragment)
+            childFragmentManager.beginTransaction().replace(R.id.logFragment, RegisterFragment())
         }
         val textViewClickHere = view.findViewById<TextView>(R.id.textViewClickHere)
         textViewClickHere.setOnClickListener {
             Log.d(TAG, "Text Click Me clicked!")
-            Navigation.findNavController(view)
-                .navigate(R.id.action_logInFragment_to_forgetPasswordFragment)
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.logFragment, ForgetPasswordFragment())?.addToBackStack(null)
+                ?.commit()
         }
 
         val buttonLogIn = view.findViewById<Button>(R.id.buttonLogIn)
@@ -72,11 +72,11 @@ class LogInFragment : Fragment() {
                 logInViewModel.login()
 
             }
-            logInViewModel.token.observe(viewLifecycleOwner){
-                findNavController().navigate(R.id.action_logInFragment_to_timelineFragment)
+            logInViewModel.token.observe(viewLifecycleOwner) {
+                    Log.d(TAG, "Navigate to the main activity and token is saved")
+                    val intent = Intent (activity, MainActivity::class.java)
+                    activity?.startActivity(intent)
             }
-//            Navigation.findNavController(view)
-//                .navigate(R.id.action_logInFragment_to_timelineFragment)
         }
     }
 }

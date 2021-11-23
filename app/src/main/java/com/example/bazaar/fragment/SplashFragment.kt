@@ -8,10 +8,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import com.example.bazaar.R
+
 
 class SplashFragment : Fragment(), Animation.AnimationListener {
     private var topAnimation: Animation? = null
@@ -25,13 +24,15 @@ class SplashFragment : Fragment(), Animation.AnimationListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
-        val imageLogo = view.findViewById<ImageView>(R.id.imageViewMiniLogo)
-        imageLogo.visibility = View.INVISIBLE
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        val imageLogo = view.findViewById<ImageView>(R.id.imageViewMiniLogo)
+//        imageLogo.visibility = View.INVISIBLE
+
         topAnimation = AnimationUtils.loadAnimation(view.context, R.anim.top_anim)
         val topLogo = view.findViewById<ImageView>(R.id.splashLogoUp)
         topLogo.startAnimation(topAnimation)
@@ -59,8 +60,8 @@ class SplashFragment : Fragment(), Animation.AnimationListener {
     }
 
     override fun onAnimationEnd(p0: Animation?) {
-        Navigation.findNavController(this.requireView())
-            .navigate(R.id.action_splashFragment_to_logInFragment)
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.logFragment, LogInFragment())?.addToBackStack(null)?.commit()
     }
 
     override fun onAnimationRepeat(p0: Animation?) {
