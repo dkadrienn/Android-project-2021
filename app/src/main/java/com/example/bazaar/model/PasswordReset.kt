@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.File
 
 data class PasswordReset(
-    val username : String="",
+    var username : String="",
     var email : String=""
 )
 

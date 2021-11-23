@@ -14,25 +14,26 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editTextEmailLogIn"
+        app:layout_constraintBottom_toTopOf="@id/editTextUsernameLogIn"
         android:text="@string/login"
         android:textColor="@android:color/white"
         android:textSize="@dimen/titleTextSize"
         android:textStyle="bold"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextEmailLogIn"
+        android:id="@+id/editTextUsernameLogIn"
         style="@style/customEditTextOutside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewLogIn"
         app:layout_constraintBottom_toTopOf="@id/editTextPasswordLogIn"
         android:layout_marginTop="@dimen/marginCustomEditText"
-        android:hint="@string/email">
+        android:hint="@string/username">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameLogIn"
             style="@style/customEditTextInside"
-            android:inputType="textEmailAddress"/>
+            android:inputType="text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,14 +42,16 @@
         style="@style/customEditTextOutside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextEmailLogIn"
+        app:layout_constraintTop_toBottomOf="@id/editTextUsernameLogIn"
         app:layout_constraintBottom_toTopOf="@id/buttonLogIn"
         android:hint="@string/password"
         app:endIconMode="password_toggle"
         app:endIconTint="@android:color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-             style="@style/customEditTextInside"/>
+            android:id="@+id/passwordLogIn"
+             style="@style/customEditTextInside"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

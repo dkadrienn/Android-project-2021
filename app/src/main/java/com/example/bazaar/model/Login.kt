@@ -3,8 +3,8 @@ package com.example.bazaar.model
 import com.google.gson.annotations.SerializedName
 
 data class Login(
-    val username : String="",
-    val password : String=""
+    var username : String="",
+    var password : String=""
 )
 
 data class LoginRequest (
