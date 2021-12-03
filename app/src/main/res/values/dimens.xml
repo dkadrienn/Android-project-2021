@@ -12,7 +12,25 @@
     <dimen name="marginCustomEditText">30dp</dimen>
     <dimen name="fragmentMargin">20dp</dimen>
     <dimen name="logoMarginBottom">15dp</dimen>
+
+    <!--splash-->
     <dimen name="marginTopSplash">120dp</dimen>
     <dimen name="splashSpace">80dp</dimen>
     <dimen name="splashLittleSpace">25dp</dimen>
+
+    <!--top bar-->
+    <dimen name="topBarLeftMargin">15dp</dimen>
+    <dimen name="topBarRightMargin">15dp</dimen>
+    <dimen name="topBarTopMargin">5dp</dimen>
+
+    <!--profile-->
+    <dimen name="marginTopProfile">50dp</dimen>
+    <dimen name="marginLeftEditText">20dp</dimen>
+    <dimen name="editTextsWidth">350dp</dimen>
+
+    <!--timeline-->
+    <dimen name="roundImageValue">100dp</dimen>
+    <dimen name="betweenItemElements">15dp</dimen>
+    <dimen name="profileSize">30dp</dimen>
+    <dimen name="betweenSellersData">10dp</dimen>
 </resources>

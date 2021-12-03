@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/logInPadding">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/itemImage"
+            android:layout_width="@dimen/roundImageValue"
+            android:layout_height="@dimen/roundImageValue"
+            android:src="@drawable/bg"
+            app:civ_border_color="#3f51b5"
+            app:civ_border_width="1dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="3dp"
+            app:civ_shadow_color="#3f51b5"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemImage"
+            android:text="@string/price"
+            android:textColor="@color/mainBg"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/sellerProfile"
+            android:layout_width="@dimen/profileSize"
+            android:layout_height="@dimen/profileSize"
+            android:layout_toEndOf="@id/itemImage"
+            android:src="@drawable/bg"
+            android:layout_marginStart="@dimen/logInPadding"
+            app:civ_border_color="#3f51b5"
+            app:civ_border_width="1dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="3dp"
+            app:civ_shadow_color="#3f51b5"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/sellerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/betweenSellersData"
+            android:layout_toEndOf="@id/sellerProfile"
+            android:hint="@string/username"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/logInPadding"
+            android:layout_toEndOf="@id/itemImage"
+            android:layout_below="@id/sellerName"
+            android:textColor="@color/mainBg"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/username"
+            android:text="@string/timeline"
+            android:layout_marginTop="@dimen/betweenItemElements"/>
+
+        <ImageView
+            android:id="@+id/itemState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/logInPadding"
+            android:layout_toEndOf="@id/itemImage"
+            android:layout_below="@id/itemName"
+            android:src="@drawable/ic_button_order_now"
+            android:layout_marginTop="@dimen/betweenItemElements"/>
+
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--            android:layout_width="@dimen/roundImageValue"-->
+<!--            android:layout_height="@dimen/roundImageValue"-->
+<!--            android:src="@drawable/bg"-->
+<!--            app:civ_border_color="@color/transparent"/>-->
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

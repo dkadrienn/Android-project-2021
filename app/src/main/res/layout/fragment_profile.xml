@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ProfileFragment"
+    android:background="@color/profileBg">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/fragment_base"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_avatar"
+        android:layout_marginTop="@dimen/marginTopProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/userNameProfile"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_upload"
+        app:layout_constraintTop_toTopOf="id/profilePic"
+        app:layout_constraintStart_toStartOf="@id/profilePic"
+        app:layout_constraintEnd_toEndOf="@id/profilePic"
+        app:layout_constraintBottom_toBottomOf="@id/profilePic"/>
+
+    <TextView
+        android:id="@+id/userNameProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePic"
+        app:layout_constraintBottom_toTopOf="@id/editTextChangeEmailProfile"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextChangeEmailProfile"
+        style="@style/customEditTextOutside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userNameProfile"
+        app:layout_constraintBottom_toTopOf="@id/changeUserNameProfile"
+        android:layout_width="@dimen/editTextsWidth"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:layout_marginStart="@dimen/marginLeftEditText"
+        android:hint="@string/email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/changeEmailProfile"
+            style="@style/customEditTextInside"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/customEditTextOutside"
+        android:id="@+id/editTextChangeUserNameProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextChangeEmailProfile"
+        app:layout_constraintBottom_toTopOf="@id/editTextChangePhoneNrProfile"
+        android:layout_width="@dimen/editTextsWidth"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:layout_marginStart="@dimen/marginLeftEditText"
+        android:hint="@string/username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/changeUserNameProfile"
+            style="@style/customEditTextInside"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextChangePhoneNrProfile"
+        style="@style/customEditTextOutside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextChangeUserNameProfile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="@dimen/editTextsWidth"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:layout_marginStart="@dimen/marginLeftEditText"
+        android:hint="@string/phoneNr">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/changePhoneNrProfile"
+            style="@style/customEditTextInside"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
