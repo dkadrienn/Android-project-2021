@@ -17,7 +17,6 @@ import com.example.bazaar.activity.MainActivity
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.viewmodel.LogInViewModel
 import com.example.bazaar.viewmodel.LogInViewModelFactory
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
 
@@ -73,9 +72,9 @@ class LogInFragment : Fragment() {
 
             }
             logInViewModel.token.observe(viewLifecycleOwner) {
-                    Log.d(TAG, "Navigate to the main activity and token is saved")
-                    val intent = Intent (activity, MainActivity::class.java)
-                    activity?.startActivity(intent)
+                Log.d(TAG, "Navigate to the main activity and token is saved")
+                val intent = Intent(activity, MainActivity::class.java)
+                activity?.startActivity(intent)
             }
         }
     }

@@ -16,8 +16,8 @@ class MarketRepository {
         return RetrofitInstance.api.password_reset(request)
     }
 
-//    suspend fun getProducts(token: String): ProductResponse {
-//        return RetrofitInstance.api.getProducts(token)
-//    }
+    suspend fun getProducts(token: String): ProductResponse {
+        return RetrofitInstance.api.getProducts(token)
+    }
 
 }

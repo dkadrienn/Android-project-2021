@@ -10,4 +10,5 @@
     <color name="error">#e13904</color>
     <color name="transparent">#00000000</color>
     <color name="profileBg">#161616</color>
+    <color name="white">#FFFFFF</color>
 </resources>

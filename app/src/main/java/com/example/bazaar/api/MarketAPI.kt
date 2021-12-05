@@ -3,6 +3,8 @@ package com.example.bazaar.api
 import com.example.bazaar.model.*
 import com.example.bazaar.utils.Constants
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface MarketAPI {
@@ -15,6 +17,6 @@ interface MarketAPI {
     @POST(Constants.PASSWORD_RESET_URL)
     suspend fun password_reset(@Body reques: PasswordResetRequest): PasswordResetResponse
 
-//    @GET(Constants.GET_PRODUCT_URL)
-//    suspend fun getProducts(@Header("token") token: String): ProductResponse
+    @GET(Constants.GET_PRODUCT_URL)
+    suspend fun getProducts(@Header("token") token: String): ProductResponse
 }

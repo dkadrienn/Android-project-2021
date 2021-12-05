@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/logInPadding">
+    android:layout_margin="@dimen/cardMargin"
+    app:cardCornerRadius="@dimen/cardRadius">
     
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,13 +14,9 @@
             android:id="@+id/itemImage"
             android:layout_width="@dimen/roundImageValue"
             android:layout_height="@dimen/roundImageValue"
-            android:src="@drawable/bg"
-            app:civ_border_color="#3f51b5"
-            app:civ_border_width="1dp"
-            app:civ_shadow="true"
-            app:civ_shadow_radius="3dp"
-            app:civ_shadow_color="#3f51b5"
-            android:layout_marginTop="@dimen/textSize"/>
+            android:src="@drawable/ic_launcher_background"
+            android:layout_marginTop="@dimen/textSize"
+            android:layout_marginStart="@dimen/marginLeftEditText"/>
 
         <TextView
             android:id="@+id/itemPrice"
@@ -30,7 +27,7 @@
             android:textColor="@color/mainBg"
             android:textStyle="bold"
             android:textSize="@dimen/textSize"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="@dimen/priceMarginStart"
             android:layout_marginTop="@dimen/textSize"/>
 
         <com.mikhaellopez.circularimageview.CircularImageView
@@ -40,11 +37,6 @@
             android:layout_toEndOf="@id/itemImage"
             android:src="@drawable/bg"
             android:layout_marginStart="@dimen/logInPadding"
-            app:civ_border_color="#3f51b5"
-            app:civ_border_width="1dp"
-            app:civ_shadow="true"
-            app:civ_shadow_radius="3dp"
-            app:civ_shadow_color="#3f51b5"
             android:layout_marginTop="@dimen/textSize"/>
 
         <TextView
@@ -79,13 +71,6 @@
             android:layout_below="@id/itemName"
             android:src="@drawable/ic_button_order_now"
             android:layout_marginTop="@dimen/betweenItemElements"/>
-
-<!--        <de.hdodenhof.circleimageview.CircleImageView-->
-<!--            xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--            android:layout_width="@dimen/roundImageValue"-->
-<!--            android:layout_height="@dimen/roundImageValue"-->
-<!--            android:src="@drawable/bg"-->
-<!--            app:civ_border_color="@color/transparent"/>-->
 
     </RelativeLayout>
 

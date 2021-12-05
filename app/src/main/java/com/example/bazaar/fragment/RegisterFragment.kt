@@ -11,11 +11,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import com.example.bazaar.R
 import com.example.bazaar.repository.MarketRepository
-import com.example.bazaar.viewmodel.LogInViewModel
-import com.example.bazaar.viewmodel.LogInViewModelFactory
 import com.example.bazaar.viewmodel.RegisterViewModel
 import com.example.bazaar.viewmodel.RegisterViewModelFactory
 import kotlinx.coroutines.launch
@@ -29,6 +26,7 @@ class RegisterFragment : Fragment() {
         val factory = RegisterViewModelFactory(this.requireContext(), MarketRepository())
         registerViewModel = ViewModelProvider(this, factory).get(RegisterViewModel::class.java)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +41,8 @@ class RegisterFragment : Fragment() {
         val textViewLogInRegister = view.findViewById<TextView>(R.id.textViewLogInRegister)
         textViewLogInRegister.setOnClickListener {
             Log.d(TAG, "Log in text clicked!")
-            childFragmentManager.beginTransaction().replace(R.id.logFragment, LogInFragment()).addToBackStack(null).commit()
+            childFragmentManager.beginTransaction().replace(R.id.logFragment, LogInFragment())
+                .addToBackStack(null).commit()
         }
 
         val buttonRegister = view.findViewById<Button>(R.id.buttonRegister)
@@ -70,7 +69,8 @@ class RegisterFragment : Fragment() {
                 registerViewModel.register()
 
             }
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.logFragment, LogInFragment())?.addToBackStack(null)?.commit()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.logFragment, LogInFragment())?.addToBackStack(null)?.commit()
         }
     }
 }

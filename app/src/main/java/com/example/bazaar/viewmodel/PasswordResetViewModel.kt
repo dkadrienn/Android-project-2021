@@ -4,7 +4,8 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bazaar.model.*
+import com.example.bazaar.model.PasswordReset
+import com.example.bazaar.model.PasswordResetRequest
 import com.example.bazaar.repository.MarketRepository
 
 class PasswordResetViewModel(val context: Context, val repository: MarketRepository) : ViewModel() {
@@ -17,7 +18,10 @@ class PasswordResetViewModel(val context: Context, val repository: MarketReposit
 
     suspend fun passwordReset() {
         val request =
-            PasswordResetRequest(username = passwordReset.value!!.username, email = passwordReset.value!!.email)
+            PasswordResetRequest(
+                username = passwordReset.value!!.username,
+                email = passwordReset.value!!.email
+            )
         try {
             val result = repository.password_reset(request)
         } catch (e: Exception) {

@@ -1,14 +1,13 @@
 package com.example.bazaar.model
 
 import com.google.gson.annotations.SerializedName
-import java.io.File
 
 data class PasswordReset(
-    var username : String="",
-    var email : String=""
+    var username: String = "",
+    var email: String = ""
 )
 
-data class PasswordResetRequest (
+data class PasswordResetRequest(
     @SerializedName("username")
     var username: String,
 
@@ -16,7 +15,7 @@ data class PasswordResetRequest (
     var email: String
 )
 
-data class PasswordResetResponse (
+data class PasswordResetResponse(
     @SerializedName("code")
     var code: Int,
 
