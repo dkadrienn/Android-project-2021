@@ -1,6 +1,8 @@
 package com.example.bazaar.fragment
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,6 +25,8 @@ import kotlinx.coroutines.launch
 class LogInFragment : Fragment() {
     val TAG = Class::class.java.simpleName
     private lateinit var logInViewModel: LogInViewModel
+    private val sharedPrefFile = "MYSHAREDPREF"
+    private val sharedPrefKey = "username"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +62,10 @@ class LogInFragment : Fragment() {
         val buttonLogIn = view.findViewById<Button>(R.id.buttonLogIn)
         val usernameLogIn = view.findViewById<EditText>(R.id.usernameLogIn)
         val passwordLogIn = view.findViewById<EditText>(R.id.passwordLogIn)
+        val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences(
+            "MySharedPref",
+            MODE_PRIVATE
+        )
         buttonLogIn.setOnClickListener {
             logInViewModel.login.value.let {
                 if (it != null) {
@@ -73,6 +81,10 @@ class LogInFragment : Fragment() {
             }
             logInViewModel.token.observe(viewLifecycleOwner) {
                 Log.d(TAG, "Navigate to the main activity and token is saved")
+                val edit = sharedPreferences.edit()
+                edit.putString(sharedPrefKey, usernameLogIn.text.toString())
+                edit.apply()
+                edit.commit()
                 val intent = Intent(activity, MainActivity::class.java)
                 activity?.startActivity(intent)
             }
