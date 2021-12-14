@@ -97,6 +97,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/amountPriceDetailPage"
             android:layout_margin="@dimen/marginBetweenElements"
+            android:text="@string/available_amount"
             android:textColor="@color/mainBg"/>
 
         <TextView

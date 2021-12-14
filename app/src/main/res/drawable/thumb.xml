@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--on-->
+    <item android:state_checked="true">
+        <shape android:shape="oval">
+            <stroke android:width="1dp" android:color="@color/mainBlue" />
+            <size android:width="@dimen/toggleButtonWidth" android:height="@dimen/toggleButtonWidth" />
+        </shape>
+    </item>
+
+    <!--off-->
+    <item android:state_checked="false">
+        <shape android:shape="oval">
+            <solid android:color="@color/mainBg" />
+            <size android:width="@dimen/toggleButtonWidth" android:height="@dimen/toggleButtonWidth" />
+        </shape>
+    </item>
+
+</selector>

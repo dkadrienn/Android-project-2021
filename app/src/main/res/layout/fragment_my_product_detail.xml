@@ -12,7 +12,7 @@
         tools:context=".fragment.ProductDetailFragment">
 
         <ImageView
-            android:id="@+id/productImageDetailPage"
+            android:id="@+id/productImageMyDetailPage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/imageHeight"
             android:layout_margin="@dimen/marginBetweenElements"
@@ -22,40 +22,40 @@
             android:src="@drawable/ic_avatar"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/sellerProfileDetailPage"
+            android:id="@+id/sellerProfileMyDetailPage"
             android:layout_width="@dimen/profileSize"
             android:layout_height="@dimen/profileSize"
             android:src="@drawable/ic_avatar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productImageDetailPage"
-            app:layout_constraintEnd_toStartOf="@id/sellerNameDetailPage"
+            app:layout_constraintTop_toBottomOf="@id/productImageMyDetailPage"
+            app:layout_constraintEnd_toStartOf="@id/sellerNameMyDetailPage"
             android:layout_margin="@dimen/marginBetweenElements" />
 
         <TextView
-            android:id="@+id/sellerNameDetailPage"
+            android:id="@+id/sellerNameMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginBetweenElements"
             android:layout_marginTop="@dimen/profileSize"
-            app:layout_constraintStart_toEndOf="@id/sellerProfileDetailPage"
-            app:layout_constraintTop_toBottomOf="@id/productImageDetailPage"
+            app:layout_constraintStart_toEndOf="@id/sellerProfileMyDetailPage"
+            app:layout_constraintTop_toBottomOf="@id/productImageMyDetailPage"
             android:textColor="@color/mainBg"/>
 
         <TextView
-            android:id="@+id/creationDateDetailPage"
+            android:id="@+id/creationDateMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/sellerProfileDetailPage"
+            app:layout_constraintTop_toTopOf="@id/sellerProfileMyDetailPage"
             android:layout_margin="@dimen/marginBetweenElements"
             android:textColor="@color/mainBg"/>
 
         <TextView
-            android:id="@+id/productNameDetailPage"
+            android:id="@+id/productNameMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sellerProfileDetailPage"
+            app:layout_constraintTop_toBottomOf="@id/sellerProfileMyDetailPage"
             android:layout_margin="@dimen/marginBetweenElements"
             android:textColor="@color/mainBg"
             android:textSize="@dimen/detailProductNameSize"/>
@@ -67,10 +67,10 @@
             android:layout_margin="@dimen/marginBetweenElements"
             android:src="@drawable/ic_edit_product"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/creationDateDetailPage"/>
+            app:layout_constraintTop_toBottomOf="@id/creationDateMyDetailPage"/>
 
         <TextView
-            android:id="@+id/amountPriceDetailPage"
+            android:id="@+id/amountPriceMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginBetweenElements"
@@ -78,51 +78,33 @@
             android:textStyle="bold"
             android:textSize="@dimen/amountProductNameSize"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productNameDetailPage"/>
+            app:layout_constraintTop_toBottomOf="@id/productNameMyDetailPage"/>
 
         <TextView
-            android:id="@+id/priceTypeDetailPage"
+            android:id="@+id/priceTypeMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marginBetweenElements"
             android:textColor="@color/mainBg"
             android:textStyle="bold"
             android:textSize="@dimen/amountProductNameSize"
-            app:layout_constraintStart_toEndOf="@id/amountPriceDetailPage"
-            app:layout_constraintTop_toBottomOf="@id/productNameDetailPage"/>
+            app:layout_constraintStart_toEndOf="@id/amountPriceMyDetailPage"
+            app:layout_constraintTop_toBottomOf="@id/productNameMyDetailPage"/>
 
         <ImageView
-            android:id="@+id/productStateDetailPage"
+            android:id="@+id/productStateMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/amountPriceDetailPage"
+            app:layout_constraintTop_toTopOf="@id/amountPriceMyDetailPage"
             android:layout_margin="@dimen/marginBetweenElements"/>
 
         <TextView
-            android:id="@+id/availableText"
+            android:id="@+id/detailMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amountPriceDetailPage"
-            android:layout_margin="@dimen/marginBetweenElements"
-            android:textColor="@color/mainBg"/>
-
-        <TextView
-            android:id="@+id/amountDetailPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/availableText"
-            app:layout_constraintTop_toTopOf="@id/availableText"
-            android:textColor="@color/mainBg"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/detailDetailPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/availableText"
+            app:layout_constraintTop_toBottomOf="@id/amountPriceMyDetailPage"
             android:layout_margin="@dimen/marginBetweenElements"
             android:textColor="@color/mainBg"/>
 
@@ -132,16 +114,30 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_ellipse"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailDetailPage"
+            app:layout_constraintTop_toBottomOf="@id/detailMyDetailPage"
             app:layout_constraintEnd_toStartOf="@id/priceCircleMyProduct"
             android:layout_marginTop="@dimen/marginBetweenElements"/>
+
+        <TextView
+            android:id="@+id/amountMyDetailPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/totalItemsCircleMyProducts"
+            app:layout_constraintBottom_toBottomOf="@id/totalItemsCircleMyProducts"
+            app:layout_constraintStart_toStartOf="@id/totalItemsCircleMyProducts"
+            app:layout_constraintEnd_toEndOf="@id/totalItemsCircleMyProducts"
+            android:textColor="@color/mainBlue"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/totalItemsTextMyProducts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/totalItemsCircleMyProducts"/>
+            app:layout_constraintStart_toStartOf="@id/totalItemsCircleMyProducts"
+            app:layout_constraintEnd_toEndOf="@id/totalItemsCircleMyProducts"
+            app:layout_constraintTop_toBottomOf="@id/totalItemsCircleMyProducts"
+            android:text="@string/total_items"
+            android:textColor="@android:color/black" />
 
         <ImageView
             android:id="@+id/priceCircleMyProduct"
@@ -150,26 +146,66 @@
             android:src="@drawable/ic_ellipse"
             app:layout_constraintStart_toEndOf="@id/totalItemsCircleMyProducts"
             app:layout_constraintTop_toTopOf="@id/totalItemsCircleMyProducts"
-            app:layout_constraintEnd_toStartOf="@id/soldCircleItemsMyProduct" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-        <ImageView
-            android:id="@+id/soldCircleItemsMyProduct"
+        <TextView
+            android:id="@+id/priceAmountMyDetailPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/priceCircleMyProduct"
             app:layout_constraintTop_toTopOf="@id/priceCircleMyProduct"
-            app:layout_constraintEnd_toStartOf="revenueCircleMyProduct"
-            android:src="@drawable/ic_ellipse"/>
+            app:layout_constraintBottom_toBottomOf="@id/priceCircleMyProduct"
+            app:layout_constraintStart_toStartOf="@id/priceCircleMyProduct"
+            app:layout_constraintEnd_toEndOf="@id/priceCircleMyProduct"
+            android:textColor="@color/mainBlue"
+            android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/revenueCircleMyProduct"
+        <TextView
+            android:id="@+id/priceTextMyProducts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/soldCircleItemsMyProduct"
-            app:layout_constraintTop_toTopOf="@id/soldCircleItemsMyProduct"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_ellipse"/>
+            app:layout_constraintStart_toStartOf="@id/priceCircleMyProduct"
+            app:layout_constraintEnd_toEndOf="@id/priceCircleMyProduct"
+            app:layout_constraintTop_toBottomOf="@id/priceCircleMyProduct"
+            android:text="@string/price_item"
+            android:textColor="@android:color/black" />
 
+<!--        <ImageView-->
+<!--            android:id="@+id/soldCircleItemsMyProduct"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toEndOf="@id/priceCircleMyProduct"-->
+<!--            app:layout_constraintTop_toTopOf="@id/priceCircleMyProduct"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/revenueCircleMyProduct"-->
+<!--            android:src="@drawable/ic_ellipse"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/soldTextMyProducts"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@id/soldCircleItemsMyProduct"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/soldCircleItemsMyProduct"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/soldCircleItemsMyProduct"-->
+<!--            android:text="@string/sold_items"-->
+<!--            android:textColor="@android:color/black" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/revenueCircleMyProduct"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toEndOf="@id/soldCircleItemsMyProduct"-->
+<!--            app:layout_constraintTop_toTopOf="@id/soldCircleItemsMyProduct"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:src="@drawable/ic_ellipse"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/revenueTextMyProducts"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@id/revenueCircleMyProduct"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/revenueCircleMyProduct"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/revenueCircleMyProduct"-->
+<!--            android:text="@string/revenue"-->
+<!--            android:textColor="@android:color/black" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

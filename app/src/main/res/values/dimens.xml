@@ -43,4 +43,7 @@
     <dimen name="detailProductNameSize">30sp</dimen>
     <dimen name="amountProductNameSize">45sp</dimen>
 
+    <!--add product-->
+    <dimen name="toggleButtonWidth">25dp</dimen>
+
 </resources>
