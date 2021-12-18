@@ -17,6 +17,8 @@ import com.example.bazaar.R
 import com.example.bazaar.adapter.RecycleViewAdapter
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.MarketRepository
+import com.example.bazaar.viewmodel.OtherUserViewModel
+import com.example.bazaar.viewmodel.OtherUserViewModelFactory
 import com.example.bazaar.viewmodel.ProductListViewModel
 import com.example.bazaar.viewmodel.ProductListViewModelFactory
 import java.util.*

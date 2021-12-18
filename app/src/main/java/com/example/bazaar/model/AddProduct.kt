@@ -3,7 +3,6 @@ package com.example.bazaar.model
 import com.google.gson.annotations.SerializedName
 
 data class AddProduct(
-    val uploadImages: List<Image> = listOf(),
     var title: String = "",
     var description: String = "",
     var price_per_unit: String = "",
@@ -15,8 +14,6 @@ data class AddProduct(
 )
 
 data class AddProductRequest(
-    @SerializedName("uploadImages")
-    val uploadImages: List<Image>,
     @SerializedName("title")
     val title: String,
     @SerializedName("description")

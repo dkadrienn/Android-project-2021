@@ -1,5 +1,7 @@
 package com.example.bazaar.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +10,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.R
+import com.example.bazaar.model.Product
+import com.example.bazaar.repository.MarketRepository
+import com.example.bazaar.utils.Constants
+import com.example.bazaar.viewmodel.OtherUserViewModel
+import com.example.bazaar.viewmodel.OtherUserViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,6 +32,11 @@ private const val ARG_DESCRIPTION = "description"
 
 class ProductDetailFragment : BaseFragment() {
     private val TAG = this.javaClass.simpleName
+
+    private lateinit var otherUserViewModel: OtherUserViewModel
+    //other user
+    var otherUserEmail: String? = null
+    var otherUserPhoneNr: Int? = null
 
     private var username: String? = null
     private var creation_time: Long? = null
@@ -44,6 +58,9 @@ class ProductDetailFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val factory = OtherUserViewModelFactory(this.requireContext(), MarketRepository())
+        otherUserViewModel = ViewModelProvider(this, factory).get(OtherUserViewModel::class.java)
+
         arguments?.let {
             Log.d("bundle", it.toString())
             username = it.getString(ARG_USERNAME)
@@ -56,6 +73,14 @@ class ProductDetailFragment : BaseFragment() {
             description = it.getString(ARG_DESCRIPTION)
 //            images = it.getStringArrayList(ARG_IMAGES)
         }
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences(
+            Constants.SHARED_PREF_FILE,
+            Context.MODE_PRIVATE
+        )
+        val edit = sharedPreferences.edit()
+        edit.putString(Constants.sharedPrefKeyUser, username)
+        edit.apply()
+        edit.commit()
     }
 
     override fun onCreateView(
@@ -72,6 +97,11 @@ class ProductDetailFragment : BaseFragment() {
         isActiveImageView = view.findViewById(R.id.productStateDetailPage)
         unitTextView = view.findViewById(R.id.amountDetailPage)
         descriptionTextView = view.findViewById(R.id.detailDetailPage)
+
+        otherUserViewModel.user.observe(viewLifecycleOwner) {
+            otherUserEmail = otherUserViewModel.user.value!!.email
+            otherUserPhoneNr = otherUserViewModel.user.value!!.phone_number
+        }
 
         val topBar = view.findViewById<ConstraintLayout>(R.id.topBarProductDetail)
         setTopBarElements(topBar)
@@ -119,5 +149,21 @@ class ProductDetailFragment : BaseFragment() {
         }
         unitTextView.apply { text = unit }
         descriptionTextView.apply { text = description }
+
+        //seller profile
+        val sellerProfile = view.findViewById<ImageView>(R.id.sellerProfileDetailPage)
+        val otherProfileFragment = OtherProfileFragment()
+        sellerProfile.setOnClickListener {
+            val bundle = bundleOf(
+                "username" to username,
+                "email" to otherUserEmail,
+                "phone_number" to otherUserPhoneNr
+            )
+            otherProfileFragment.arguments = bundle
+            Log.d("onProfileClick", "Clicked" + username)
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.mainFragment, otherProfileFragment)?.addToBackStack(null)
+                ?.commit()
+        }
     }
 }

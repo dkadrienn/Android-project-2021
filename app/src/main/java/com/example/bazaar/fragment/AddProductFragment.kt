@@ -1,6 +1,7 @@
 package com.example.bazaar.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,6 +63,8 @@ class AddProductFragment : Fragment() {
             }
         }
         buttonLaunch.setOnClickListener {
+            Log.d(TAG, "Launching")
+            Log.d(TAG, addProductViewModel.newProduct.value.toString())
             addProductViewModel.newProduct.value.let {
                 if (it != null) {
                     it.title = title.text.toString()

@@ -17,9 +17,12 @@ interface MarketAPI {
     @GET(Constants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header("token") token: String, @Header("limit") limit: Int): ProductResponse
 
+//    @POST(Constants.Add_PRODUCT)
+//    suspend fun addProduct(@Header("token") token: String, @Body request: AddProductRequest): AddProductResponse
+
     @Multipart
     @POST(Constants.Add_PRODUCT)
-    suspend fun addProducts(
+    suspend fun addProduct(
         @Header("token") token: String,
         @Part("title") title: String,
         @Part("description") description: String,
@@ -30,4 +33,7 @@ interface MarketAPI {
         @Part("amount_type") amount_type: String,
         @Part("price_type") price_type: String
     ): AddProductResponse
+
+    @GET(Constants.GET_USER_DATA)
+    suspend fun getUser(@Header("username") username: String) : OtherUserResponse
 }

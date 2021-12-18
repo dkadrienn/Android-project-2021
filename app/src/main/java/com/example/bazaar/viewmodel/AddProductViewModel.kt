@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModel
 import com.example.bazaar.model.AddProduct
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
+import okhttp3.MediaType
+import okhttp3.RequestBody
+
 
 class AddProductViewModel(val context: Context, val repository: MarketRepository) : ViewModel() {
     val TAG = Class::class.java.simpleName
@@ -24,6 +27,7 @@ class AddProductViewModel(val context: Context, val repository: MarketRepository
     }
 
     suspend fun addProduct() {
+        Log.d(TAG, "alma " + newProduct.value.toString())
 //        val request =
 //            AddProductRequest(
 //                title = newProduct.value!!.title,
@@ -33,10 +37,10 @@ class AddProductViewModel(val context: Context, val repository: MarketRepository
 //                is_active = newProduct.value!!.is_active,
 //                rating = newProduct.value!!.rating,
 //                amount_type = newProduct.value!!.amount_type,
-//                price_type = newProduct.value!!.price_type,
-//                uploadImages = newProduct.value!!.uploadImages)
+//                price_type = newProduct.value!!.price_type
+//            )
         try {
-            val result = repository.addProducts(
+            repository.addProduct(
                 token!!,
                 newProduct.value!!.title,
                 newProduct.value!!.description,
@@ -47,10 +51,10 @@ class AddProductViewModel(val context: Context, val repository: MarketRepository
                 newProduct.value!!.amount_type,
                 newProduct.value!!.price_type
             )
+            Toast.makeText(context, "Successfully added a new product", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             Log.d(TAG, "AddProductViewModel - exception: ${e.toString()}")
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
-//        Toast.makeText(context, "Successfully added a new product", Toast.LENGTH_LONG).show()
     }
 }
