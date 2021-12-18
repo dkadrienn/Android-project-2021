@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="miniLogoMarginTop">20dp</dimen>
-    <dimen name="textSize">20sp</dimen>
+    <dimen name="textSize">18sp</dimen>
     <dimen name="titleTextSize">25sp</dimen>
     <dimen name="littleTextSize">16sp</dimen>
-    <dimen name="logInPadding">35dp</dimen>
+    <dimen name="logInPadding">30dp</dimen>
     <dimen name="buttonPadding">10dp</dimen>
     <dimen name="buttonRadius">50dp</dimen>
     <dimen name="simpleButtonStroke">3dp</dimen>
@@ -22,6 +22,8 @@
     <dimen name="topBarLeftMargin">15dp</dimen>
     <dimen name="topBarRightMargin">15dp</dimen>
     <dimen name="topBarTopMargin">5dp</dimen>
+    <dimen name="titleRightMargin">30dp</dimen>
+    <dimen name="titleTopMargin">8dp</dimen>
 
     <!--profile-->
     <dimen name="marginTopProfile">50dp</dimen>
@@ -45,5 +47,5 @@
 
     <!--add product-->
     <dimen name="toggleButtonWidth">25dp</dimen>
-
+    <dimen name="buttonWidth">300dp</dimen>
 </resources>

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.bazaar.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +21,9 @@ private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
 private const val ARG_DESCRIPTION = "description"
 
-class ProductDetailFragment : Fragment() {
+class ProductDetailFragment : BaseFragment() {
+    private val TAG = this.javaClass.simpleName
+
     private var username: String? = null
     private var creation_time: Long? = null
     private var title: String? = null
@@ -70,7 +72,35 @@ class ProductDetailFragment : Fragment() {
         isActiveImageView = view.findViewById(R.id.productStateDetailPage)
         unitTextView = view.findViewById(R.id.amountDetailPage)
         descriptionTextView = view.findViewById(R.id.detailDetailPage)
+
+        val topBar = view.findViewById<ConstraintLayout>(R.id.topBarProductDetail)
+        setTopBarElements(topBar)
+        setOnElementsClickListeners(topBar)
         return view
+    }
+
+    override fun setTopBarElements(view: View) {
+        val backArrow = view.findViewById<ImageView>(R.id.top_bar_left_icon)
+        val title = view.findViewById<TextView>(R.id.top_bar_title)
+        val profile = view.findViewById<ImageView>(R.id.top_bar_profile)
+        title.apply { text = context.getString(R.string.product_detail) }
+        backArrow.visibility = View.VISIBLE
+        profile.visibility = View.VISIBLE
+    }
+
+    override fun setOnElementsClickListeners(view: View) {
+        val backArrow = view.findViewById<ImageView>(R.id.top_bar_left_icon)
+        val profile = view.findViewById<ImageView>(R.id.top_bar_profile)
+        backArrow.setOnClickListener {
+            Log.d(TAG, "Clicked back")
+            activity?.supportFragmentManager?.popBackStack()
+        }
+        profile.setOnClickListener {
+            Log.d(TAG, "Clicked profile")
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.mainFragment, ProfileFragment())?.addToBackStack(null)
+                ?.commit()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

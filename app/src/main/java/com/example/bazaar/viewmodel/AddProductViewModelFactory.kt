@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.repository.MarketRepository
 
-class ProductListViewModelFactory(
+class AddProductViewModelFactory (
     private val context: Context,
     private val repository: MarketRepository
-) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return ProductListViewModel(context, repository) as T
-    }
+    ) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return AddProductViewModel(context, repository) as T
+        }
 }

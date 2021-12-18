@@ -13,7 +13,10 @@ abstract class BaseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_base, container, false)
+        val view = inflater.inflate(R.layout.fragment_base, container, false)
+        return view
     }
+
+    abstract fun setTopBarElements(view: View)
+    abstract fun setOnElementsClickListeners(view: View)
 }

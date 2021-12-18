@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -58,7 +59,6 @@ class RecycleViewAdapter(
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
         holder.imageView_state.setImageResource(R.drawable.ic_button_order_now)
-
 
 //        val images = currentItem.images
 //        if(images.isNotEmpty()) {

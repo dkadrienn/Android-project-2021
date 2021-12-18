@@ -10,18 +10,18 @@ data class Image(
 )
 
 data class Product(
-    val rating: Double,
-    val amount_type: String,
-    val price_type: String,
-    val product_id: String,
-    val username: String,
-    val is_active: Boolean,
-    val price_per_unit: String,
-    val units: String,
-    val description: String,
-    val title: String,
-    val images: List<Image>,
-    val creation_time: Long
+    val rating: Double = 0.0,
+    val amount_type: String = "",
+    val price_type: String = "",
+    val product_id: String = "",
+    val username: String = "",
+    val is_active: Boolean = true,
+    val price_per_unit: String = "",
+    val units: String = "",
+    val description: String = "",
+    val title: String = "",
+    val images: List<Image> = listOf(),
+    val creation_time: Long = 0
 )
 
 data class ProductResponse(
@@ -31,27 +31,4 @@ data class ProductResponse(
     val products: List<Product>,
     @SerializedName("timestamp")
     val timestamp: Long
-)
-
-data class AddProductResponse(
-    @SerializedName("creation")
-    val creation: String,
-    @SerializedName("product_id")
-    val product_id: String,
-    @SerializedName("username")
-    val username: String,
-    @SerializedName("is_active")
-    val is_active: Boolean,
-    @SerializedName("price_per_unit")
-    val price_per_unit: String,
-    @SerializedName("units")
-    val units: String,
-    @SerializedName("description")
-    val description: String,
-    @SerializedName("title")
-    val title: String,
-    @SerializedName("images")
-    val images: List<Image>,
-    @SerializedName("creation_time")
-    val creation_time: Long
 )

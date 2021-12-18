@@ -12,10 +12,10 @@ interface MarketAPI {
     suspend fun login(@Body request: LoginRequest): LoginResponse
 
     @POST(Constants.PASSWORD_RESET_URL)
-    suspend fun password_reset(@Body reques: PasswordResetRequest): PasswordResetResponse
+    suspend fun passwordReset(@Body request: PasswordResetRequest): PasswordResetResponse
 
     @GET(Constants.GET_PRODUCT_URL)
-    suspend fun getProducts(@Header("token") token: String): ProductResponse
+    suspend fun getProducts(@Header("token") token: String, @Header("limit") limit: Int): ProductResponse
 
     @Multipart
     @POST(Constants.Add_PRODUCT)
@@ -28,6 +28,6 @@ interface MarketAPI {
         @Part("is_active") is_active: Boolean,
         @Part("rating") rating: Double,
         @Part("amount_type") amount_type: String,
-        @Part("price_type") price_type: String,
+        @Part("price_type") price_type: String
     ): AddProductResponse
 }

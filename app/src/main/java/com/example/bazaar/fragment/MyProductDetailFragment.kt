@@ -2,12 +2,12 @@ package com.example.bazaar.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.bazaar.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +21,9 @@ private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
 private const val ARG_DESCRIPTION = "description"
 
-class MyProductDetailFragment : Fragment() {
+class MyProductDetailFragment : BaseFragment() {
+    private val TAG = this.javaClass.simpleName
+
     private var username: String? = null
     private var creation_time: Long? = null
     private var title: String? = null
@@ -73,7 +75,26 @@ class MyProductDetailFragment : Fragment() {
         unitTextView = view.findViewById(R.id.amountMyDetailPage)
         priceAmountTextView = view.findViewById(R.id.priceAmountMyDetailPage)
         descriptionTextView = view.findViewById(R.id.detailMyDetailPage)
+
+        val topBar = view.findViewById<ConstraintLayout>(R.id.topBarMyMarketDetail)
+        setTopBarElements(topBar)
+        setOnElementsClickListeners(topBar)
         return view
+    }
+
+    override fun setTopBarElements(view: View) {
+        val backArrow = view.findViewById<ImageView>(R.id.top_bar_left_icon)
+        val title = view.findViewById<TextView>(R.id.top_bar_title)
+        title.apply { text = context.getString(R.string.product_detail) }
+        backArrow.visibility = View.VISIBLE
+    }
+
+    override fun setOnElementsClickListeners(view: View) {
+        val backArrow = view.findViewById<ImageView>(R.id.top_bar_left_icon)
+        backArrow.setOnClickListener {
+            Log.d(TAG, "Clicked back")
+            activity?.supportFragmentManager?.popBackStack()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

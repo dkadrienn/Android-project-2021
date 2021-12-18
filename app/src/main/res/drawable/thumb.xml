@@ -4,7 +4,7 @@
     <!--on-->
     <item android:state_checked="true">
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="@color/mainBlue" />
+            <solid android:width="1dp" android:color="@color/mainBlue" />
             <size android:width="@dimen/toggleButtonWidth" android:height="@dimen/toggleButtonWidth" />
         </shape>
     </item>

@@ -3,12 +3,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="mainBg">#212121</color>
+    <color name="mainBg">#161616</color>
     <color name="littleBgLogIn">#212121</color>
     <color name="mainBlue">#08b4c4</color>
     <color name="lighterGray">#878787</color>
     <color name="error">#e13904</color>
     <color name="transparent">#00000000</color>
-    <color name="profileBg">#161616</color>
     <color name="white">#FFFFFF</color>
 </resources>

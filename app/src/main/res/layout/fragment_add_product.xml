@@ -1,72 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.AddProductFragment">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/newImageAddP"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_new_product_image"/>
+        tools:context=".fragment.AddProductFragment">
 
-    <ImageView
-        android:id="@+id/uploadImgAddP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_upload"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/newImageAddP"/>
+        <ImageView
+            android:id="@+id/newImageAddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_new_product_image"/>
 
-    <TextView
-        android:id="@+id/uploadImgTextAddP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/uploadImgAddP"
-        app:layout_constraintBottom_toBottomOf="@id/newImageAddP"
-        android:text="@string/upload_image"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/textSize"/>
+        <ImageView
+            android:id="@+id/uploadImgAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_upload"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/newImageAddP"/>
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/sliderAddP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newImageAddP"
-        android:layout_margin="@dimen/marginBetweenElements"
-        android:thumb="@drawable/thumb"
-        app:track="@drawable/track" />
+        <TextView
+            android:id="@+id/uploadImgTextAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/uploadImgAddP"
+            app:layout_constraintBottom_toBottomOf="@id/newImageAddP"
+            android:text="@string/upload_image"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sliderAddP"
-        android:layout_margin="@dimen/marginBetweenElements"
-        android:text="@string/give_us_details_about_your_fare"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/textSize"/>
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sliderAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newImageAddP"
+            android:layout_margin="@dimen/marginBetweenElements"
+            android:thumb="@drawable/thumb"
+            app:track="@drawable/track" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/launch_my_fare"
-        android:layout_margin="@dimen/marginBetweenElements"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageView
+            android:id="@+id/stateImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/sliderAddP"
+            app:layout_constraintTop_toBottomOf="@id/newImageAddP"
+            android:layout_margin="@dimen/marginBetweenElements"
+            android:src="@drawable/ic_inactive"/>
 
+        <TextView
+            android:id="@+id/dateAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newImageAddP"
+            android:layout_margin="@dimen/marginBetweenElements"
+            android:text="@string/date"
+            android:textColor="@android:color/black"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sliderAddP"
+            android:layout_margin="@dimen/marginBetweenElements"
+            android:text="@string/give_us_details_about_your_fare"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"/>
+
+        <EditText
+            android:id="@+id/titleAddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/textAddP"
+            android:hint="@string/title"/>
+
+        <EditText
+            android:id="@+id/priceAddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/titleAddP"
+            android:hint="@string/price_item"/>
+
+        <EditText
+            android:id="@+id/amountAddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/priceAddP"
+            android:hint="@string/available_amount"/>
+
+        <EditText
+            android:id="@+id/descriptionAddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/amountAddP"
+            android:hint="@string/short_description"/>
+
+        <EditText
+            android:id="@+id/ratingAddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/descriptionAddP"
+            android:hint="@string/rating"
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/buttonLaunchAddP"
+            android:layout_width="@dimen/buttonWidth"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_my_fare"
+            android:textColor="@android:color/white"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ratingAddP"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/gray_button_bg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

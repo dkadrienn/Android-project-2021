@@ -7,4 +7,8 @@ object Constants {
     const val PASSWORD_RESET_URL = "user/reset"
     const val GET_PRODUCT_URL = "products"
     const val Add_PRODUCT = "products/add"
+    const val SHARED_PREF_FILE = "MySharedPref"
+    const val sharedPrefKeyToken = "token"
+    const val sharedPrefKeyUsername = "username"
+
 }
