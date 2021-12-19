@@ -70,11 +70,11 @@ class AddProductFragment : Fragment() {
                     it.title = title.text.toString()
                     it.price_per_unit = price.text.toString()
                     it.price_type = "RON"
-                    it.unit = unit.text.toString()
+                    it.units = unit.text.toString()
                     it.amount_type = "KG"
                     it.description = description.text.toString()
-                    it.rating = rating.text.toString().toDouble()
-                    it.is_active = toggleButton.isChecked
+//                    it.rating = rating.text.toString().toDouble()
+//                    it.is_active = toggleButton.isChecked
                 }
             }
             lifecycleScope.launch {

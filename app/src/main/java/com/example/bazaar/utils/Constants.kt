@@ -9,6 +9,7 @@ object Constants {
     const val Add_PRODUCT = "products/add"
     const val GET_USER_DATA = "user/data"
     const val GET_ORDERS_URL = "orders"
+    const val REMOVE_PRODUCT_URL = "products/remove?product_id={product_id}"
 
     const val SHARED_PREF_FILE = "MySharedPref"
     const val sharedPrefKeyToken = "token"

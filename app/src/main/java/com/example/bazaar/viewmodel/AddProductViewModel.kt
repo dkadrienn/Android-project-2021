@@ -27,25 +27,14 @@ class AddProductViewModel(val context: Context, val repository: MarketRepository
     }
 
     suspend fun addProduct() {
-        Log.d(TAG, "alma " + newProduct.value.toString())
-//        val request =
-//            AddProductRequest(
-//                title = newProduct.value!!.title,
-//                description = newProduct.value!!.description,
-//                price_per_unit = newProduct.value!!.price_per_unit,
-//                unit = newProduct.value!!.unit,
-//                is_active = newProduct.value!!.is_active,
-//                rating = newProduct.value!!.rating,
-//                amount_type = newProduct.value!!.amount_type,
-//                price_type = newProduct.value!!.price_type
-//            )
+        Log.d(TAG, "New product " + newProduct.value.toString())
         try {
             repository.addProduct(
                 token!!,
                 newProduct.value!!.title,
                 newProduct.value!!.description,
                 newProduct.value!!.price_per_unit,
-                newProduct.value!!.unit,
+                newProduct.value!!.units,
                 newProduct.value!!.is_active,
                 newProduct.value!!.rating,
                 newProduct.value!!.amount_type,

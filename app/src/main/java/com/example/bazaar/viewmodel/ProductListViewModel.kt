@@ -29,7 +29,7 @@ class ProductListViewModel(val context: Context, val repository: MarketRepositor
         viewModelScope.launch {
             try {
                 val result =
-                    repository.getProducts(token.toString(), 100)
+                    repository.getProducts(token.toString(), 200)
                 products.value = result.products
                 Log.d(TAG, "ListViewModel - #products:  ${result.item_count}")
             } catch (e: Exception) {

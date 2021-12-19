@@ -39,4 +39,7 @@ interface MarketAPI {
 
     @GET(Constants.GET_ORDERS_URL)
     suspend fun getOrders(@Header("token") token: String, @Header("limit") limit: Int): OrderResponse
+
+    @POST(Constants.REMOVE_PRODUCT_URL)
+    suspend fun removeProduct(@Header("token") token: String, @Path("product_id") product_id: String) : RemoveProductResponse
 }
