@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.BaseFragment"
+    android:background="@color/littleBgLogIn"
+    android:padding="@dimen/buttonPadding">
+
+    <ImageView
+        android:id="@+id/top_bar_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        android:src="@drawable/logo_mini"/>
+
+    <ImageView
+        android:id="@+id/top_bar_left_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topBarTopMargin"
+        android:layout_marginStart="@dimen/topBarTopMargin"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/ic_left_arrow"/>
+
+    <TextView
+        android:id="@+id/top_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/titleRightMargin"
+        android:layout_marginTop="@dimen/titleTopMargin"
+        android:textSize="@dimen/textSize"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/top_bar_left_icon"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/top_bar_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topBarTopMargin"
+        android:layout_marginEnd="@dimen/topBarRightMargin"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/top_bar_search"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_filter"/>
+
+    <ImageView
+        android:id="@+id/top_bar_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topBarTopMargin"
+        android:layout_marginEnd="@dimen/topBarRightMargin"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/top_bar_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_search_24"/>
+
+    <ImageView
+        android:id="@+id/top_bar_profile"
+        android:layout_width="@dimen/profileSize"
+        android:layout_height="@dimen/profileSize"
+        android:layout_marginTop="@dimen/topBarTopMargin"
+        android:layout_marginEnd="@dimen/topBarRightMargin"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_avatar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

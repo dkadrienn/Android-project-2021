@@ -30,8 +30,8 @@
             android:background="@color/littleBgLogIn"
             app:menu="@menu/bottom_navigation_menu"
             style="Widget.MaterialComponents.BottomNavigationView.Colored"
-            app:itemTextColor="@color/lighterGray"
-            app:itemIconTint="@color/lighterGray"/>
+            app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+            app:itemTextColor="@drawable/bottom_nav_icon_color_selector"/>
 
     </LinearLayout>
 

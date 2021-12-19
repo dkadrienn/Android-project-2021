@@ -3,11 +3,11 @@ package com.example.bazaar.model
 import com.google.gson.annotations.SerializedName
 
 data class Login(
-    var username : String="",
-    var password : String=""
+    var username: String = "",
+    var password: String = ""
 )
 
-data class LoginRequest (
+data class LoginRequest(
     @SerializedName("username")
     var username: String,
 
@@ -15,7 +15,7 @@ data class LoginRequest (
     var password: String
 )
 
-data class LoginResponse (
+data class LoginResponse(
     @SerializedName("username")
     var username: String,
 

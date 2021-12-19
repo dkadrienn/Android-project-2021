@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -37,6 +38,10 @@ class ForgetPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val imageLogo = requireActivity().findViewById<ImageView>(R.id.imageViewMiniLogo)
+        imageLogo.visibility = View.VISIBLE
+
         val buttonReset = view.findViewById<Button>(R.id.buttonForgotPwd)
         val editTextUsernameForgetPwd = view.findViewById<EditText>(R.id.usernameForgetPwd)
         val editTextEmailForgetPwd = view.findViewById<EditText>(R.id.emailForgetPwd)
@@ -46,8 +51,6 @@ class ForgetPasswordFragment : Fragment() {
             passwordResetViewModel.passwordReset.value.let {
                 if (it != null) {
                     it.username = editTextUsernameForgetPwd.text.toString()
-                }
-                if (it != null) {
                     it.email = editTextEmailForgetPwd.text.toString()
                 }
             }

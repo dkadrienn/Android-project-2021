@@ -12,6 +12,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColorHint">@color/lighterGray</item>
+        <item name="background">@null</item>
         <item name="boxStrokeColor">@color/mainBlue</item>
         <item name="android:layout_marginTop">@dimen/marginCustomEditText</item>
     </style>

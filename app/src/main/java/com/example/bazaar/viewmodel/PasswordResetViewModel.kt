@@ -2,9 +2,11 @@ package com.example.bazaar.viewmodel
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bazaar.model.*
+import com.example.bazaar.model.PasswordReset
+import com.example.bazaar.model.PasswordResetRequest
 import com.example.bazaar.repository.MarketRepository
 
 class PasswordResetViewModel(val context: Context, val repository: MarketRepository) : ViewModel() {
@@ -17,11 +19,15 @@ class PasswordResetViewModel(val context: Context, val repository: MarketReposit
 
     suspend fun passwordReset() {
         val request =
-            PasswordResetRequest(username = passwordReset.value!!.username, email = passwordReset.value!!.email)
+            PasswordResetRequest(
+                username = passwordReset.value!!.username,
+                email = passwordReset.value!!.email
+            )
         try {
-            val result = repository.password_reset(request)
+            val result = repository.passwordReset(request)
         } catch (e: Exception) {
-            Log.d(TAG, "LoginViewModel - exception: ${e.toString()}")
+            Log.d(TAG, "PasswordResetModel - exception: ${e.toString()}")
+            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -12,12 +12,43 @@ class MarketRepository {
         return RetrofitInstance.api.login(request)
     }
 
-    suspend fun password_reset(request: PasswordResetRequest): PasswordResetResponse {
-        return RetrofitInstance.api.password_reset(request)
+    suspend fun passwordReset(request: PasswordResetRequest): PasswordResetResponse {
+        return RetrofitInstance.api.passwordReset(request)
     }
 
-//    suspend fun getProducts(token: String): ProductResponse {
-//        return RetrofitInstance.api.getProducts(token)
+    suspend fun getProducts(token: String, limit: Int): ProductResponse {
+        return RetrofitInstance.api.getProducts(token, limit)
+    }
+
+//    suspend fun addProduct(token: String, request: AddProductRequest): AddProductResponse{
+//        return RetrofitInstance.api.addProduct(token, request)
 //    }
 
+    suspend fun addProduct(
+        token: String,
+        title: String,
+        description: String,
+        price_per_unit: String,
+        unit: String,
+        is_active: Boolean,
+        rating: Double,
+        amount_type: String,
+        price_type: String
+        ): AddProductResponse {
+        return RetrofitInstance.api.addProduct(
+            token,
+            title,
+            description,
+            price_per_unit,
+            unit,
+            is_active,
+            rating,
+            amount_type,
+            price_type
+        )
+    }
+
+    suspend fun getUser(username: String): OtherUserResponse {
+        return RetrofitInstance.api.getUser(username)
+    }
 }

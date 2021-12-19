@@ -30,8 +30,8 @@ class SplashFragment : Fragment(), Animation.AnimationListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val imageLogo = view.findViewById<ImageView>(R.id.imageViewMiniLogo)
-//        imageLogo.visibility = View.INVISIBLE
+        val imageLogo = requireActivity().findViewById<ImageView>(R.id.imageViewMiniLogo)
+        imageLogo.visibility = View.GONE
 
         topAnimation = AnimationUtils.loadAnimation(view.context, R.anim.top_anim)
         val topLogo = view.findViewById<ImageView>(R.id.splashLogoUp)
