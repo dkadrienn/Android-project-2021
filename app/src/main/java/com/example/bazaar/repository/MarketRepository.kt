@@ -51,4 +51,8 @@ class MarketRepository {
     suspend fun getUser(username: String): OtherUserResponse {
         return RetrofitInstance.api.getUser(username)
     }
+
+    suspend fun getOrders(token: String, limit: Int): OrderResponse {
+        return RetrofitInstance.api.getOrders(token, limit)
+    }
 }

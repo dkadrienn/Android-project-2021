@@ -36,4 +36,7 @@ interface MarketAPI {
 
     @GET(Constants.GET_USER_DATA)
     suspend fun getUser(@Header("username") username: String) : OtherUserResponse
+
+    @GET(Constants.GET_ORDERS_URL)
+    suspend fun getOrders(@Header("token") token: String, @Header("limit") limit: Int): OrderResponse
 }

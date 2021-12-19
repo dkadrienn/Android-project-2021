@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/cardMargin"
+    app:cardCornerRadius="@dimen/cardRadius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/orderSellerProfile"
+            android:layout_width="@dimen/profileSize"
+            android:layout_height="@dimen/profileSize"
+            android:src="@drawable/ic_avatar"
+            android:layout_marginStart="@dimen/marginLeftEditText"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/orderSellerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/betweenSellersData"
+            android:layout_toEndOf="@id/orderSellerProfile"
+            android:hint="@string/username"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/orderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/orderSellerName"
+            android:hint="@string/date"
+            android:layout_marginStart="@dimen/betweenSellersData"
+            android:layout_marginTop="@dimen/textSize"
+            android:layout_alignParentEnd="true"
+            android:layout_toLeftOf="@+id/orderDetailArrow"/>
+
+        <ImageView
+            android:id="@+id/orderDetailArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_up"
+            android:layout_alignEnd="@id/orderDate"
+            android:padding="20dp"/>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/orderItemImage"
+            android:layout_width="@dimen/itemImageValues"
+            android:layout_height="@dimen/itemImageValues"
+            android:layout_below="@id/orderSellerProfile"
+            android:src="@drawable/ic_3ss_logo"
+            android:layout_marginTop="@dimen/textSize"
+            android:layout_marginStart="@dimen/marginLeftEditText"/>
+
+<!--        <Spinner-->
+<!--            android:id="@+id/planets_spinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            />-->
+
+        <TextView
+            android:id="@+id/orderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/logInPadding"
+            android:layout_toEndOf="@id/orderItemImage"
+            android:layout_below="@id/orderSellerName"
+            android:textColor="@color/mainBlue"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:layout_marginTop="@dimen/betweenItemElements"/>
+
+        <TextView
+            android:id="@+id/orderItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/logInPadding"
+            android:layout_toEndOf="@id/orderItemImage"
+            android:layout_below="@id/orderStatus"
+            android:textColor="@color/mainBg"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/username"
+            android:layout_marginTop="@dimen/betweenItemElements"/>
+
+        <TextView
+            android:id="@+id/orderDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderItemName"
+            android:layout_toEndOf="@id/orderItemImage"
+            android:layout_marginStart="@dimen/logInPadding"
+            android:layout_marginTop="@dimen/betweenItemElements"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/orderItemAmountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderDetail"
+            android:text="@string/amount"
+            android:textColor="@color/mainBg"
+            android:layout_marginStart="@dimen/logInPadding"
+            android:layout_marginTop="@dimen/textSize"
+            android:layout_toEndOf="@id/orderItemImage" />
+
+        <TextView
+            android:id="@+id/orderItemAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderDetail"
+            android:text="@string/amount"
+            android:textColor="@color/mainBg"
+            android:layout_marginTop="@dimen/textSize"
+            android:layout_toEndOf="@id/orderItemAmountText" />
+
+        <TextView
+            android:id="@+id/separatorVertical"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/orderItemAmount"
+            android:layout_below="@id/orderDetail"
+            android:background="@android:color/black"
+            android:layout_marginTop="@dimen/textSize"
+            android:layout_marginStart="@dimen/separatorSpace"
+            android:layout_marginEnd="@dimen/separatorSpace"
+            android:width="@dimen/separatorWidth"
+            android:height="@dimen/separatorHeight"/>
+
+        <TextView
+            android:id="@+id/orderItemPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderDetail"
+            android:layout_toEndOf="@id/separatorVertical"
+            android:text="@string/price"
+            android:textColor="@color/mainBg"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/orderItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderDetail"
+            android:layout_toEndOf="@id/orderItemPriceText"
+            android:text="@string/price"
+            android:textColor="@color/mainBg"
+            android:layout_marginTop="@dimen/textSize"/>
+
+        <ImageView
+            android:id="@+id/declineOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_decline"
+            android:layout_below="@id/separatorVertical"
+            android:layout_toStartOf="@id/separatorVertical"
+            android:layout_marginStart="@dimen/textSize"
+            android:layout_marginTop="@dimen/marginTopButtons"
+            android:layout_marginBottom="@dimen/marginTopButtons"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/acceptOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_accept"
+            android:layout_below="@id/separatorVertical"
+            android:layout_toEndOf="@id/declineOrder"
+            android:layout_marginStart="@dimen/textSize"
+            android:layout_marginTop="@dimen/marginTopButtons"
+            android:layout_marginBottom="@dimen/marginTopButtons"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

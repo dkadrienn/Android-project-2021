@@ -48,4 +48,12 @@
     <!--add product-->
     <dimen name="toggleButtonWidth">25dp</dimen>
     <dimen name="buttonWidth">300dp</dimen>
+
+    <!--my fares-->
+    <dimen name="buttonMargins">45dp</dimen>
+    <dimen name="marginTopButtons">12dp</dimen>
+    <dimen name="itemImageValues">80dp</dimen>
+    <dimen name="separatorWidth">1dp</dimen>
+    <dimen name="separatorHeight">15dp</dimen>
+    <dimen name="separatorSpace">5dp</dimen>
 </resources>

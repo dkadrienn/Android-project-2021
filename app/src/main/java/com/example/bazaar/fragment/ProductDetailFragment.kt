@@ -28,6 +28,7 @@ private const val ARG_PRICE = "price"
 private const val ARG_PRICE_TYPE = "price_type"
 private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
+private const val ARG_AMOUNT_TYPE = "amount_type"
 private const val ARG_DESCRIPTION = "description"
 
 class ProductDetailFragment : BaseFragment() {
@@ -45,6 +46,7 @@ class ProductDetailFragment : BaseFragment() {
     private var price_type: String? = null
     private var is_active: Boolean = false
     private var unit: String? = null
+    private var amount_type: String? = null
     private var description: String? = null
 
     private lateinit var usernameTextView: TextView
@@ -70,6 +72,7 @@ class ProductDetailFragment : BaseFragment() {
             price_type = it.getString(ARG_PRICE_TYPE)
             is_active = it.getBoolean(ARG_IS_ACTIVE)
             unit = it.getString(ARG_UNIT)
+            amount_type = it.getString(ARG_AMOUNT_TYPE)
             description = it.getString(ARG_DESCRIPTION)
 //            images = it.getStringArrayList(ARG_IMAGES)
         }
@@ -148,6 +151,7 @@ class ProductDetailFragment : BaseFragment() {
             isActiveImageView.setImageResource(R.drawable.ic_inactive)
         }
         unitTextView.apply { text = unit }
+//        unitTextView.append(" $amount_type")
         descriptionTextView.apply { text = description }
 
         //seller profile
