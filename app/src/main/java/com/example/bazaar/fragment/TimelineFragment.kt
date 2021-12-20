@@ -140,6 +140,7 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             "price_type" to product.price_type,
             "is_active" to product.is_active,
             "unit" to product.units,
+            "amount_type" to product.amount_type,
             "description" to product.description
         )
         productDetailFragment.arguments = bundle

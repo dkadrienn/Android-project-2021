@@ -3,17 +3,17 @@ package com.example.bazaar.model
 import com.google.gson.annotations.SerializedName
 
 data class Order(
-    val order_id: String = "",
-    val username: String = "",
-    val status: String = "",
-    val price_per_unit: String = "",
-    val price_type: String = "",
-    val units: String = "",
-    val amount_type: String = "",
-    val description: String = "",
-    val title: String = "",
-    val images: List<Image> = listOf(),
-    val creation_time: Long = 0
+    var order_id: String = "",
+    var username: String = "",
+    var status: String = "",
+    var price_per_unit: String = "",
+    var price_type: String = "",
+    var units: String = "",
+    var amount_type: String = "",
+    var description: String = "",
+    var title: String = "",
+    var images: List<Image> = listOf(),
+    var creation_time: Long = 0
 )
 
 data class OrderResponse(

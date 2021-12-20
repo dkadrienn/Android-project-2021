@@ -1,10 +1,13 @@
 package com.example.bazaar.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
@@ -18,15 +21,16 @@ import com.example.bazaar.R
 import com.example.bazaar.adapter.OrderRecyclerViewAdapter
 import com.example.bazaar.model.Order
 import com.example.bazaar.repository.MarketRepository
+import com.example.bazaar.utils.Constants
 import com.example.bazaar.viewmodel.OrderViewModel
 import com.example.bazaar.viewmodel.OrderViewModelFactory
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.absoluteValue
 
 
 class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickListener {
     private val TAG = this.javaClass.simpleName
+    private var myName: String? = null
 
     lateinit var listViewModel: OrderViewModel
     private lateinit var recycler_view: RecyclerView
@@ -34,10 +38,19 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
 
     private lateinit var searchBar: SearchView
 
+    private lateinit var mySales: List<Order>
+    private lateinit var myOrders: List<Order>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = OrderViewModelFactory(requireContext(), MarketRepository())
         listViewModel = ViewModelProvider(this, factory).get(OrderViewModel::class.java)
+        val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences(
+            Constants.SHARED_PREF_FILE,
+            Context.MODE_PRIVATE
+        )
+        myName = sharedPreferences.getString(Constants.sharedPrefKeyUsername, "defaultname")
     }
 
     override fun onCreateView(
@@ -50,6 +63,7 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
         recycler_view = view.findViewById(R.id.myFaresRecycleView)
         setupRecyclerView()
         listViewModel.orders.observe(viewLifecycleOwner) {
+            mySales = listViewModel.orders.value!!.filter { it.username == myName }
             adapter.setData(listViewModel.orders.value as ArrayList<Order>)
             adapter.notifyDataSetChanged()
         }
@@ -62,13 +76,16 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 val searchText = p0!!.toLowerCase(Locale.getDefault())
                 Log.d(TAG, searchText)
-                if(searchText.isNotEmpty()){
-                    adapter.setData(ArrayList(listViewModel.orders.value?.filter { it.title.toLowerCase(
-                        Locale.getDefault()).contains(searchText) }))
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(listViewModel.orders.value?.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
                     adapter.notifyDataSetChanged()
                 }
                 return false
@@ -77,14 +94,38 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
             override fun onQueryTextChange(p0: String?): Boolean {
                 val searchText = p0!!.toLowerCase(Locale.getDefault())
                 Log.d(TAG, searchText)
-                if(searchText.isNotEmpty()){
-                    adapter.setData(ArrayList(listViewModel.orders.value?.filter { it.title.toLowerCase(
-                        Locale.getDefault()).contains(searchText) }))
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(listViewModel.orders.value?.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
                     adapter.notifyDataSetChanged()
                 }
                 return false
             }
         })
+
+
+        //set buttons click listener
+        val ongoingSalesButton = view.findViewById<Button>(R.id.ongoingSalesButtonMyFares)
+        val ongoingOrdersButton = view.findViewById<Button>(R.id.ongoingOrdersButtonMyFares)
+
+        ongoingSalesButton.setOnClickListener {
+            listViewModel.orders.observe(viewLifecycleOwner) {
+                mySales = listViewModel.orders.value!!.filter { it.username == myName }
+                adapter.setData(listViewModel.orders.value as ArrayList<Order>)
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+        ongoingOrdersButton.setOnClickListener {
+            listViewModel.orders.observe(viewLifecycleOwner) {
+                myOrders = listViewModel.orders.value!!.filter { it.username == myName }
+                adapter.setData(myOrders as ArrayList<Order>)
+                adapter.notifyDataSetChanged()
+            }
+        }
     }
 
     override fun setTopBarElements(view: View) {

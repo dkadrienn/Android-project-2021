@@ -12,7 +12,6 @@ import android.widget.SearchView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +28,7 @@ import kotlin.collections.ArrayList
 
 class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener {
     private val TAG = this.javaClass.simpleName
-    private var myName : String? = null
+    private var myName: String? = null
 
     lateinit var listViewModel: ProductListViewModel
     private lateinit var recycler_view: RecyclerView
@@ -45,7 +44,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             Constants.SHARED_PREF_FILE,
             Context.MODE_PRIVATE
         )
-        myName = sharedPreferences.getString("username", "defaultname")
+        myName = sharedPreferences.getString(Constants.sharedPrefKeyUsername, "defaultname")
         Log.d(TAG, "My name is:$myName")
         val factory = ProductListViewModelFactory(requireContext(), MarketRepository())
         listViewModel = ViewModelProvider(this, factory).get(ProductListViewModel::class.java)
@@ -161,6 +160,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             "price_type" to product.price_type,
             "is_active" to product.is_active,
             "unit" to product.units,
+            "amount_type" to product.amount_type,
             "description" to product.description,
             "rating" to product.rating
         )

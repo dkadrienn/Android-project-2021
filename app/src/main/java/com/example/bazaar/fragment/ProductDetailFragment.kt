@@ -142,17 +142,16 @@ class ProductDetailFragment : BaseFragment() {
         val date = Date(creation_time!!)
         val format = SimpleDateFormat("yyyy.MM.dd")
         dateTextView.apply { text = format.format(date).toString() }
-        titleTextView.apply { text = title }
-        priceTextView.apply { text = price }
-        priceTypeTextView.apply { text = price_type }
+        titleTextView.apply { text = title!!.replace("\"", "") }
+        priceTextView.apply { text = price!!.replace("\"", "") }
+        priceTypeTextView.apply { text = price_type!!.replace("\"", "") }
         if (is_active) {
             isActiveImageView.setImageResource(R.drawable.ic_active)
         } else {
             isActiveImageView.setImageResource(R.drawable.ic_inactive)
         }
-        unitTextView.apply { text = unit }
-//        unitTextView.append(" $amount_type")
-        descriptionTextView.apply { text = description }
+        unitTextView.apply { text = unit!!.replace("\"", "") + amount_type!!.replace("\"", "") }
+        descriptionTextView.apply { text = description!!.replace("\"", "") }
 
         //seller profile
         val sellerProfile = view.findViewById<ImageView>(R.id.sellerProfileDetailPage)

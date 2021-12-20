@@ -65,7 +65,7 @@ class OrderRecyclerViewAdapter(
         holder.textView_status.text = currentItem.status
         holder.textView_name.text = currentItem.title.replace("\"", "")
         holder.textView_description.text = currentItem.description.replace("\"", "")
-        holder.textView_amount.text = currentItem.units.replace("\"", "")
+        holder.textView_amount.text = " " + currentItem.units.replace("\"", "") + currentItem.amount_type.replace("\"", "")
         holder.textView_price.text = " " + currentItem.price_per_unit.replace("\"", "") + currentItem.price_type.replace("\"", "")
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_decline.setImageResource(R.drawable.ic_decline)

@@ -51,7 +51,6 @@ class UpdateUserDataViewModel(val context: Context, val repository: MarketReposi
             Toast.makeText(context, "Successfully edited", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             Log.d(TAG, "UserUpdateViewModel - exception: ${e.toString()}")
-            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }
 }

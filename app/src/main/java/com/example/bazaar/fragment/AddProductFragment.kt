@@ -51,7 +51,9 @@ class AddProductFragment : Fragment() {
 
         val title = view.findViewById<EditText>(R.id.titleAddP)
         val price = view.findViewById<EditText>(R.id.priceAddP)
+        val price_type = view.findViewById<EditText>(R.id.priceTypeAddP)
         val unit = view.findViewById<EditText>(R.id.amountAddP)
+        val unit_type = view.findViewById<EditText>(R.id.amountTypeAddP)
         val description = view.findViewById<EditText>(R.id.descriptionAddP)
         val rating = view.findViewById<EditText>(R.id.ratingAddP)
 
@@ -73,13 +75,13 @@ class AddProductFragment : Fragment() {
                     it.price_per_unit = price.text.toString()
                 }
                 if (it != null) {
-                    it.price_type = "RON"
+                    it.price_type = price_type.toString()
                 }
                 if (it != null) {
                     it.units = unit.text.toString()
                 }
                 if (it != null) {
-                    it.amount_type = "KG"
+                    it.amount_type = unit_type.toString()
                 }
                 if (it != null) {
                     it.description = description.text.toString()

@@ -95,7 +95,7 @@
 
         <EditText
             android:id="@+id/priceAddP"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="@dimen/marginBetweenElements"
@@ -103,13 +103,32 @@
             android:hint="@string/price_item"/>
 
         <EditText
+            android:id="@+id/priceTypeAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/titleAddP"
+            android:hint="@string/price_item"/>
+
+
+        <EditText
             android:id="@+id/amountAddP"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="@dimen/marginBetweenElements"
             app:layout_constraintTop_toBottomOf="@id/priceAddP"
-            android:hint="@string/available_amount"/>
+            android:hint="@string/available_amount" />
+
+        <EditText
+            android:id="@+id/amountTypeAddP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/marginBetweenElements"
+            app:layout_constraintTop_toBottomOf="@id/priceTypeAddP"
+            android:hint="@string/amount_type"/>
 
         <EditText
             android:id="@+id/descriptionAddP"

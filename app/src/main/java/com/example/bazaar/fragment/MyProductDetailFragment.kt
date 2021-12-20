@@ -20,6 +20,7 @@ private const val ARG_PRICE = "price"
 private const val ARG_PRICE_TYPE = "price_type"
 private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
+private const val ARG_AMOUNT_TYPE = "amount_type"
 private const val ARG_DESCRIPTION = "description"
 private const val ARG_RATING = "rating"
 
@@ -33,6 +34,7 @@ class MyProductDetailFragment : BaseFragment() {
     private var price_type: String? = null
     private var is_active: Boolean = false
     private var unit: String? = null
+    private var amount_type: String? = null
     private var description: String? = null
     private var rating: Double? = null
 
@@ -57,6 +59,7 @@ class MyProductDetailFragment : BaseFragment() {
             price_type = it.getString(ARG_PRICE_TYPE)
             is_active = it.getBoolean(ARG_IS_ACTIVE)
             unit = it.getString(ARG_UNIT)
+            amount_type = it.getString(ARG_AMOUNT_TYPE)
             description = it.getString(ARG_DESCRIPTION)
             rating = it.getDouble(ARG_RATING)
 //            images = it.getStringArrayList(ARG_IMAGES)
@@ -107,28 +110,29 @@ class MyProductDetailFragment : BaseFragment() {
         val date = Date(creation_time!!)
         val format = SimpleDateFormat("yyyy.MM.dd")
         dateTextView.apply { text = format.format(date).toString() }
-        titleTextView.apply { text = title }
-        priceTextView.apply { text = price }
-        priceTypeTextView.apply { text = price_type }
-        priceAmountTextView.apply { text = price + price_type }
+        titleTextView.apply { text = title!!.replace("\"", "") }
+        priceTextView.apply { text = price!!.replace("\"", "") }
+        priceTypeTextView.apply { text = price_type!!.replace("\"", "") }
+        priceAmountTextView.apply { text = price!!.replace("\"", "") + price_type!!.replace("\"", "") }
         if (is_active) {
             isActiveImageView.setImageResource(R.drawable.ic_active)
         } else {
             isActiveImageView.setImageResource(R.drawable.ic_inactive)
         }
-        unitTextView.apply { text = unit }
-        descriptionTextView.apply { text = description }
+        unitTextView.apply { text = unit!!.replace("\"", "") + amount_type!!.replace("\"", "") }
+        descriptionTextView.apply { text = description!!.replace("\"", "") }
 
         val editProductFragment = EditProductFragment()
         val bundle = bundleOf(
-            "username" to username,
+            "username" to username!!.replace("\"", ""),
             "creation_time" to creation_time,
-            "title" to title,
-            "price" to price,
-            "price_type" to price_type,
+            "title" to title!!.replace("\"", ""),
+            "price" to price!!.replace("\"", ""),
+            "price_type" to price_type!!.replace("\"", ""),
             "is_active" to is_active,
-            "unit" to unit,
-            "description" to description,
+            "unit" to unit!!.replace("\"", ""),
+            "amount_type" to amount_type!!.replace("\"", ""),
+            "description" to description!!.replace("\"", ""),
             "rating" to rating
         )
         editProductFragment.arguments = bundle

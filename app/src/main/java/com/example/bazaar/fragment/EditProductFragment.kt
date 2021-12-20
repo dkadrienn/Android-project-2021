@@ -22,6 +22,7 @@ private const val ARG_PRICE = "price"
 private const val ARG_PRICE_TYPE = "price_type"
 private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
+private const val ARG_AMOUNT_TYPE = "amount_type"
 private const val ARG_DESCRIPTION = "description"
 private const val ARG_RATING = "rating"
 
@@ -35,6 +36,7 @@ class EditProductFragment : Fragment() {
     private var price_type: String? = null
     private var is_active: Boolean = false
     private var unit: String? = null
+    private var amount_type: String? = null
     private var description: String? = null
     private var rating: Double? = null
 
@@ -48,6 +50,7 @@ class EditProductFragment : Fragment() {
             price_type = it.getString(ARG_PRICE_TYPE)
             is_active = it.getBoolean(ARG_IS_ACTIVE)
             unit = it.getString(ARG_UNIT)
+            amount_type = it.getString(ARG_AMOUNT_TYPE)
             description = it.getString(ARG_DESCRIPTION)
             rating = it.getDouble(ARG_RATING)
         }
@@ -66,7 +69,9 @@ class EditProductFragment : Fragment() {
 
         val titleEditText = view.findViewById<EditText>(R.id.titleAddP)
         val priceEditText = view.findViewById<EditText>(R.id.priceAddP)
+        val priceTypeEditText = view.findViewById<EditText>(R.id.priceTypeAddP)
         val unitEditText = view.findViewById<EditText>(R.id.amountAddP)
+        val unitTypeEditText = view.findViewById<EditText>(R.id.amountTypeAddP)
         val descriptionEditText = view.findViewById<EditText>(R.id.descriptionAddP)
         val ratingEditText = view.findViewById<EditText>(R.id.ratingAddP)
         val dateTextView = view.findViewById<TextView>(R.id.dateAddP)
@@ -86,7 +91,9 @@ class EditProductFragment : Fragment() {
 
         titleEditText.text = title!!.toEditable()
         priceEditText.text = price!!.toEditable()
+        priceTypeEditText.text = price_type!!.toEditable()
         unitEditText.text = unit!!.toEditable()
+        unitTypeEditText.text = amount_type!!.toEditable()
         descriptionEditText.text = description!!.toEditable()
         ratingEditText.text = rating.toString().toEditable()
         dateTextView.append(" " + SimpleDateFormat("yyyy.MM.dd").format(creation_time))

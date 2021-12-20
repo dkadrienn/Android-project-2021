@@ -60,7 +60,7 @@ class RecycleViewAdapter(
     override fun onBindViewHolder(holder: RecycleViewViewHolder, position: Int) {
         val currentItem = list[position]
         holder.textView_name.text = currentItem.title.replace("\"", "")
-        holder.textView_price.text = currentItem.price_per_unit.replace("\"", "")
+        holder.textView_price.text = currentItem.price_per_unit.replace("\"", "") + currentItem.price_type.replace("\"", "")
         holder.textView_seller.text = currentItem.username.replace("\"", "")
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
