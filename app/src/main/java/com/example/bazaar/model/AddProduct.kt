@@ -15,48 +15,48 @@ data class AddProduct(
 
 data class AddProductRequest(
     @SerializedName("title")
-    val title: String,
+    var title: String,
     @SerializedName("description")
-    val description: String,
+    var description: String,
     @SerializedName("price_per_unit")
-    val price_per_unit: String,
+    var price_per_unit: String,
     @SerializedName("units")
-    val units: String,
+    var units: String,
     @SerializedName("is_active")
-    val is_active: Boolean,
+    var is_active: Boolean,
     @SerializedName("rating")
-    val rating: String,
+    var rating: Double,
     @SerializedName("amount_type")
-    val amount_type: String,
+    var amount_type: String,
     @SerializedName("price_type")
-    val price_type: String
+    var price_type: String
 )
 
 data class AddProductResponse(
     @SerializedName("creation")
-    val creation: String,
+    var creation: String,
     @SerializedName("product_id")
-    val product_id: String,
+    var product_id: String,
     @SerializedName("username")
-    val username: String,
-//    @SerializedName("is_active")
-//    val is_active: Boolean,
+    var username: String,
+    @SerializedName("is_active")
+    var is_active: Boolean,
     @SerializedName("price_per_unit")
-    val price_per_unit: String,
+    var price_per_unit: String,
     @SerializedName("units")
-    val units: String,
+    var units: String,
     @SerializedName("description")
-    val description: String,
+    var description: String,
     @SerializedName("title")
-    val title: String,
-//    @SerializedName("rating")
-//    val rating: Double,
+    var title: String,
+    @SerializedName("rating")
+    var rating: Double,
     @SerializedName("amount_type")
-    val amount_type: String,
+    var amount_type: String,
     @SerializedName("price_type")
-    val price_type: String,
+    var price_type: String,
     @SerializedName("images")
-    val images: List<Image>,
+    var images: List<Image>,
     @SerializedName("creation_time")
-    val creation_time: Long
+    var creation_time: Long
 )

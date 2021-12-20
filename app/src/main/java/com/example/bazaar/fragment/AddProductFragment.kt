@@ -68,13 +68,27 @@ class AddProductFragment : Fragment() {
             addProductViewModel.newProduct.value.let {
                 if (it != null) {
                     it.title = title.text.toString()
+                }
+                if (it != null) {
                     it.price_per_unit = price.text.toString()
+                }
+                if (it != null) {
                     it.price_type = "RON"
+                }
+                if (it != null) {
                     it.units = unit.text.toString()
+                }
+                if (it != null) {
                     it.amount_type = "KG"
+                }
+                if (it != null) {
                     it.description = description.text.toString()
-//                    it.rating = rating.text.toString().toDouble()
-//                    it.is_active = toggleButton.isChecked
+                }
+                if (it != null) {
+                    it.rating = rating.text.toString().toDouble()
+                }
+                if (it != null) {
+                    it.is_active = toggleButton.isChecked
                 }
             }
             lifecycleScope.launch {

@@ -29,23 +29,22 @@ class MarketRepository {
         title: String,
         description: String,
         price_per_unit: String,
-        unit: String,
+        units: String,
         is_active: Boolean,
-        rating: Double,
         amount_type: String,
-        price_type: String
+        price_type: String,
+        rating: Double
         ): AddProductResponse {
         return RetrofitInstance.api.addProduct(
             token,
             title,
             description,
             price_per_unit,
-            unit,
+            units,
             is_active,
-            rating,
             amount_type,
-            price_type
-        )
+            price_type,
+            rating)
     }
 
     suspend fun getUser(username: String): OtherUserResponse {

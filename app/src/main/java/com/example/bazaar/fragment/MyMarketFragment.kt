@@ -39,7 +39,6 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
 
     private lateinit var myProducts: List<Product>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences(

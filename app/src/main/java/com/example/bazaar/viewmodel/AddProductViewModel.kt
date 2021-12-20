@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bazaar.model.AddProduct
+import com.example.bazaar.model.AddProductRequest
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
 import okhttp3.MediaType
@@ -28,17 +29,27 @@ class AddProductViewModel(val context: Context, val repository: MarketRepository
 
     suspend fun addProduct() {
         Log.d(TAG, "New product " + newProduct.value.toString())
+        val request = AddProductRequest(
+            title = newProduct.value!!.title,
+            description = newProduct.value!!.description,
+            price_per_unit = newProduct.value!!.price_per_unit,
+            units = newProduct.value!!.units,
+            is_active = newProduct.value!!.is_active,
+            rating = newProduct.value!!.rating,
+            amount_type = newProduct.value!!.amount_type,
+            price_type = newProduct.value!!.price_type
+        )
         try {
             repository.addProduct(
                 token!!,
-                newProduct.value!!.title,
-                newProduct.value!!.description,
-                newProduct.value!!.price_per_unit,
-                newProduct.value!!.units,
-                newProduct.value!!.is_active,
-                newProduct.value!!.rating,
-                newProduct.value!!.amount_type,
-                newProduct.value!!.price_type
+                request.title,
+                request.description,
+                request.price_per_unit,
+                request.units,
+                request.is_active,
+                request.amount_type,
+                request.price_type,
+                request.rating
             )
             Toast.makeText(context, "Successfully added a new product", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {

@@ -78,7 +78,7 @@ class LogInFragment : Fragment() {
             }
                 lifecycleScope.launch {
                     logInViewModel.login()
-                }
+            }
             logInViewModel.token.observe(viewLifecycleOwner) {
                 Log.d(TAG, "Navigate to the main activity and token is saved")
                 val edit = sharedPreferences.edit()

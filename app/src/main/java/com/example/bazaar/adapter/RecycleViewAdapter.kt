@@ -14,6 +14,7 @@ class RecycleViewAdapter(
     private var list: ArrayList<Product>,
     private val context: Context,
     private val listener: OnItemClickListener,
+//    private val listenerLong: OnItemLongClickListener
 ) :
     RecyclerView.Adapter<RecycleViewAdapter.RecycleViewViewHolder>() {
 
@@ -36,10 +37,16 @@ class RecycleViewAdapter(
             val current = list[bindingAdapterPosition]
             listener.onItemClick(current)
         }
+
+
     }
 
     interface OnItemClickListener {
         fun onItemClick(product: Product)
+    }
+
+    interface OnItemLongClickListener{
+        fun onItemLongClick(position: Int)
     }
 
     // 2. Called only a few times = number of items on screen + a few more ones
@@ -52,12 +59,19 @@ class RecycleViewAdapter(
     // 3. Called many times, when we scroll the list
     override fun onBindViewHolder(holder: RecycleViewViewHolder, position: Int) {
         val currentItem = list[position]
-        holder.textView_name.text = currentItem.title
-        holder.textView_price.text = currentItem.price_per_unit
-        holder.textView_seller.text = currentItem.username
+        holder.textView_name.text = currentItem.title.replace("\"", "")
+        holder.textView_price.text = currentItem.price_per_unit.replace("\"", "")
+        holder.textView_seller.text = currentItem.username.replace("\"", "")
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
-        holder.imageView_state.setImageResource(R.drawable.ic_button_order_now)
+
+        if(currentItem.username == "dkadrienn"){
+            holder.imageView_state.setImageResource(R.drawable.ic_active)
+        } else if (currentItem.is_active){
+            holder.imageView_state.setImageResource(R.drawable.ic_button_order_now)
+        } else{
+            holder.imageView_state.setImageResource(R.drawable.ic_inactive)
+        }
 
 //        val images = currentItem.images
 //        if(images.isNotEmpty()) {

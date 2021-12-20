@@ -27,12 +27,12 @@ interface MarketAPI {
         @Part("title") title: String,
         @Part("description") description: String,
         @Part("price_per_unit") price_per_unit: String,
-        @Part("unit") unit: String,
+        @Part("units") units: String,
         @Part("is_active") is_active: Boolean,
-        @Part("rating") rating: Double,
         @Part("amount_type") amount_type: String,
-        @Part("price_type") price_type: String
-    ): AddProductResponse
+        @Part("price_type") price_type: String,
+        @Part("rating") rating: Double
+        ): AddProductResponse
 
     @GET(Constants.GET_USER_DATA)
     suspend fun getUser(@Header("username") username: String) : OtherUserResponse
