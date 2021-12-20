@@ -109,7 +109,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTextChangePhoneNrProfile"
-            app:layout_constraintBottom_toTopOf="@id/publishButtonPrdofile"
+            app:layout_constraintBottom_toTopOf="@id/publishButtonProfile"
             android:layout_width="@dimen/editTextsWidth"
             android:layout_marginTop="@dimen/marginCustomEditText"
             android:layout_marginStart="@dimen/marginLeftEditText"
@@ -123,7 +123,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/publishButtonPrdofile"
+            android:id="@+id/publishButtonProfile"
             android:layout_width="@dimen/buttonWidth"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

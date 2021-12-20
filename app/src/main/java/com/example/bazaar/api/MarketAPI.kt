@@ -17,9 +17,6 @@ interface MarketAPI {
     @GET(Constants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header("token") token: String, @Header("limit") limit: Int): ProductResponse
 
-//    @POST(Constants.Add_PRODUCT)
-//    suspend fun addProduct(@Header("token") token: String, @Body request: AddProductRequest): AddProductResponse
-
     @Multipart
     @POST(Constants.Add_PRODUCT)
     suspend fun addProduct(
@@ -42,4 +39,16 @@ interface MarketAPI {
 
     @POST(Constants.REMOVE_PRODUCT_URL)
     suspend fun removeProduct(@Header("token") token: String, @Path("product_id") product_id: String) : RemoveProductResponse
+
+    @Multipart
+    @POST(Constants.USER_UPDATE_URL)
+    suspend fun updateUserData(
+        @Header("token") token: String,
+        @Part("username") username: String,
+        @Part("email") email: String,
+        @Part("phone_number") phone_number: Int
+    ): UpdateUserDataResponse
+
+    @GET(Constants.PASSWORD_RESET_TOKEN_URL)
+    suspend fun resetPasswordWithToken(@Header("token") token: String, @Header("new_password") new_password: String): ResetPasswordTokenResponse
 }

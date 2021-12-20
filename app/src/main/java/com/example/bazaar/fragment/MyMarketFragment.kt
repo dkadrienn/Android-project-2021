@@ -161,7 +161,8 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             "price_type" to product.price_type,
             "is_active" to product.is_active,
             "unit" to product.units,
-            "description" to product.description
+            "description" to product.description,
+            "rating" to product.rating
         )
         myProductDetailFragment.arguments = bundle
         Log.d("OnProductClick", "Clicked" + product.price_type)

@@ -15,7 +15,7 @@ class LogInViewModel(val context: Context, val repository: MarketRepository) : V
     val TAG = Class::class.java.simpleName
     var token: MutableLiveData<String> = MutableLiveData()
     var login = MutableLiveData<Login>()
-    val sharedPreferences: SharedPreferences = context.getSharedPreferences(
+    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
         Constants.SHARED_PREF_FILE,
         Context.MODE_PRIVATE
     )
@@ -29,9 +29,10 @@ class LogInViewModel(val context: Context, val repository: MarketRepository) : V
             LoginRequest(username = login.value!!.username, password = login.value!!.password)
         try {
             val result = repository.login(request)
-//            MyApplication.token = result.token
             val edit = sharedPreferences.edit()
             edit.putString(Constants.sharedPrefKeyToken, result.token)
+            edit.putString(Constants.sharedPrefKeyEmail, result.email)
+            edit.putString(Constants.sharedPrefKeyPhoneNr, result.phone_number.toString())
             edit.apply()
             edit.commit()
             token.value = result.token

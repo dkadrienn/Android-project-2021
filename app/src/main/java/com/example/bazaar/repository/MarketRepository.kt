@@ -20,10 +20,6 @@ class MarketRepository {
         return RetrofitInstance.api.getProducts(token, limit)
     }
 
-//    suspend fun addProduct(token: String, request: AddProductRequest): AddProductResponse{
-//        return RetrofitInstance.api.addProduct(token, request)
-//    }
-
     suspend fun addProduct(
         token: String,
         title: String,
@@ -53,5 +49,23 @@ class MarketRepository {
 
     suspend fun getOrders(token: String, limit: Int): OrderResponse {
         return RetrofitInstance.api.getOrders(token, limit)
+    }
+
+    suspend fun updateUserData(
+        token: String,
+        username: String,
+        email: String,
+        phone_number: Int
+    ): UpdateUserDataResponse {
+        return RetrofitInstance.api.updateUserData(
+            token,
+            username,
+            email,
+            phone_number)
+    }
+
+
+    suspend fun resetPasswordWithToken(token: String, new_password:String): ResetPasswordTokenResponse {
+        return RetrofitInstance.api.resetPasswordWithToken(token, new_password)
     }
 }

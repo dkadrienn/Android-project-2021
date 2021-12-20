@@ -65,9 +65,7 @@ class RecycleViewAdapter(
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
 
-        if(currentItem.username == "dkadrienn"){
-            holder.imageView_state.setImageResource(R.drawable.ic_active)
-        } else if (currentItem.is_active){
+        if (currentItem.is_active){
             holder.imageView_state.setImageResource(R.drawable.ic_button_order_now)
         } else{
             holder.imageView_state.setImageResource(R.drawable.ic_inactive)

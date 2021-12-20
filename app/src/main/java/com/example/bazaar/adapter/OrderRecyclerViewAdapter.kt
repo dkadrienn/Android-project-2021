@@ -60,13 +60,13 @@ class OrderRecyclerViewAdapter(
     override fun onBindViewHolder(holder: OrderRecycleViewViewHolder, position: Int) {
         val currentItem = list[position]
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
-        holder.textView_seller.text = currentItem.username
+        holder.textView_seller.text = currentItem.username.replace("\"", "")
         holder.textView_date.text = (" " + SimpleDateFormat("yyyy.MM.dd").format(currentItem.creation_time))
         holder.textView_status.text = currentItem.status
-        holder.textView_name.text = currentItem.title
-        holder.textView_description.text = currentItem.description
-        holder.textView_amount.text = currentItem.units
-        holder.textView_price.text = " " + currentItem.price_per_unit + currentItem.price_type
+        holder.textView_name.text = currentItem.title.replace("\"", "")
+        holder.textView_description.text = currentItem.description.replace("\"", "")
+        holder.textView_amount.text = currentItem.units.replace("\"", "")
+        holder.textView_price.text = " " + currentItem.price_per_unit.replace("\"", "") + currentItem.price_type.replace("\"", "")
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_decline.setImageResource(R.drawable.ic_decline)
         holder.imageView_accept.setImageResource(R.drawable.ic_accept)

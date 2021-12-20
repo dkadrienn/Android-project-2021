@@ -17,8 +17,6 @@ import com.example.bazaar.R
 import com.example.bazaar.adapter.RecycleViewAdapter
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.MarketRepository
-import com.example.bazaar.viewmodel.OtherUserViewModel
-import com.example.bazaar.viewmodel.OtherUserViewModelFactory
 import com.example.bazaar.viewmodel.ProductListViewModel
 import com.example.bazaar.viewmodel.ProductListViewModelFactory
 import java.util.*
@@ -31,7 +29,7 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: RecycleViewAdapter
 
-    private lateinit var searchBar : SearchView
+    private lateinit var searchBar: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,27 +59,35 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-            searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(p0: String?): Boolean {
-                    val searchText = p0!!.toLowerCase(Locale.getDefault())
-                    Log.d(TAG, searchText)
-                    if(searchText.isNotEmpty()){
-                        adapter.setData(ArrayList(listViewModel.products.value?.filter { it.title.toLowerCase(Locale.getDefault()).contains(searchText) }))
-                        adapter.notifyDataSetChanged()
-                    }
-                    return false
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                val searchText = p0!!.toLowerCase(Locale.getDefault())
+                Log.d(TAG, searchText)
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(listViewModel.products.value?.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
+                    adapter.notifyDataSetChanged()
                 }
+                return false
+            }
 
-                override fun onQueryTextChange(p0: String?): Boolean {
-                    val searchText = p0!!.toLowerCase(Locale.getDefault())
-                    Log.d(TAG, searchText)
-                    if(searchText.isNotEmpty()){
-                        adapter.setData(ArrayList(listViewModel.products.value?.filter { it.title.toLowerCase(Locale.getDefault()).contains(searchText) }))
-                        adapter.notifyDataSetChanged()
-                    }
-                    return false
+            override fun onQueryTextChange(p0: String?): Boolean {
+                val searchText = p0!!.toLowerCase(Locale.getDefault())
+                Log.d(TAG, searchText)
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(listViewModel.products.value?.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
+                    adapter.notifyDataSetChanged()
                 }
-            })
+                return false
+            }
+        })
     }
 
     override fun setTopBarElements(view: View) {

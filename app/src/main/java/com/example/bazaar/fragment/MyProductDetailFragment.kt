@@ -21,6 +21,7 @@ private const val ARG_PRICE_TYPE = "price_type"
 private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
 private const val ARG_DESCRIPTION = "description"
+private const val ARG_RATING = "rating"
 
 class MyProductDetailFragment : BaseFragment() {
     private val TAG = this.javaClass.simpleName
@@ -33,6 +34,7 @@ class MyProductDetailFragment : BaseFragment() {
     private var is_active: Boolean = false
     private var unit: String? = null
     private var description: String? = null
+    private var rating: Double? = null
 
     private lateinit var usernameTextView: TextView
     private lateinit var dateTextView: TextView
@@ -56,6 +58,7 @@ class MyProductDetailFragment : BaseFragment() {
             is_active = it.getBoolean(ARG_IS_ACTIVE)
             unit = it.getString(ARG_UNIT)
             description = it.getString(ARG_DESCRIPTION)
+            rating = it.getDouble(ARG_RATING)
 //            images = it.getStringArrayList(ARG_IMAGES)
         }
 
@@ -115,6 +118,26 @@ class MyProductDetailFragment : BaseFragment() {
         }
         unitTextView.apply { text = unit }
         descriptionTextView.apply { text = description }
-    }
 
+        val editProductFragment = EditProductFragment()
+        val bundle = bundleOf(
+            "username" to username,
+            "creation_time" to creation_time,
+            "title" to title,
+            "price" to price,
+            "price_type" to price_type,
+            "is_active" to is_active,
+            "unit" to unit,
+            "description" to description,
+            "rating" to rating
+        )
+        editProductFragment.arguments = bundle
+
+        val editButton: ImageView = view.findViewById(R.id.editButtonMyProduct)
+        editButton.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.mainFragment, editProductFragment)?.addToBackStack(null)
+                ?.commit()
+        }
+    }
 }
