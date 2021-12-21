@@ -2,6 +2,11 @@ package com.example.bazaar.model
 
 import com.google.gson.annotations.SerializedName
 
+data class Profile(
+    var username: String = "",
+    var phone_number: Int = 0
+)
+
 data class UpdatedData(
     var _id: String = "",
     var username: String = "",
@@ -18,8 +23,8 @@ data class UpdatedData(
 data class UpdateUserDataRequest(
     @SerializedName("username")
     var username: String = "",
-    @SerializedName("email")
-    var email: String = "",
+//    @SerializedName("email")
+//    var email: String = "",
     @SerializedName("phone_number")
     var phone_number: Int = 0
 )

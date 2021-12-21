@@ -22,7 +22,7 @@ import com.example.bazaar.viewmodel.ProductListViewModelFactory
 import java.util.*
 import kotlin.collections.ArrayList
 
-class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener {
+class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener, RecycleViewAdapter.OnItemLongClickListener {
     private val TAG = this.javaClass.simpleName
 
     lateinit var listViewModel: ProductListViewModel
@@ -117,7 +117,7 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
     }
 
     private fun setupRecyclerView() {
-        adapter = RecycleViewAdapter(ArrayList<Product>(), this.requireContext(), this)
+        adapter = RecycleViewAdapter(ArrayList<Product>(), this.requireContext(), this, this)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this.context)
         recycler_view.addItemDecoration(
@@ -141,12 +141,17 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             "is_active" to product.is_active,
             "unit" to product.units,
             "amount_type" to product.amount_type,
-            "description" to product.description
+            "description" to product.description,
+            "product_id" to product.product_id
         )
         productDetailFragment.arguments = bundle
-        Log.d("OnProductClick", "Clicked" + product.price_type)
+        Log.d("OnProductClick", "Clicked " + product.product_id)
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.mainFragment, productDetailFragment)?.addToBackStack(null)
             ?.commit()
+    }
+
+    override fun onItemLongClick(product: Product) {
+
     }
 }

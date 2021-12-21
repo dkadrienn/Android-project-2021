@@ -75,13 +75,13 @@ class AddProductFragment : Fragment() {
                     it.price_per_unit = price.text.toString()
                 }
                 if (it != null) {
-                    it.price_type = price_type.toString()
+                    it.price_type = price_type.text.toString()
                 }
                 if (it != null) {
                     it.units = unit.text.toString()
                 }
                 if (it != null) {
-                    it.amount_type = unit_type.toString()
+                    it.amount_type = unit_type.text.toString()
                 }
                 if (it != null) {
                     it.description = description.text.toString()

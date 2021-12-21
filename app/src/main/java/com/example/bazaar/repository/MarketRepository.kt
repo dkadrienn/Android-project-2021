@@ -30,7 +30,7 @@ class MarketRepository {
         amount_type: String,
         price_type: String,
         rating: Double
-        ): AddProductResponse {
+    ): AddProductResponse {
         return RetrofitInstance.api.addProduct(
             token,
             title,
@@ -40,7 +40,8 @@ class MarketRepository {
             is_active,
             amount_type,
             price_type,
-            rating)
+            rating
+        )
     }
 
     suspend fun getUser(username: String): OtherUserResponse {
@@ -54,18 +55,29 @@ class MarketRepository {
     suspend fun updateUserData(
         token: String,
         username: String,
-        email: String,
+//        email: String,
         phone_number: Int
     ): UpdateUserDataResponse {
         return RetrofitInstance.api.updateUserData(
             token,
             username,
-            email,
-            phone_number)
+//            email,
+            phone_number
+        )
     }
 
-    suspend fun resetPasswordWithToken(token: String, new_password:String): ResetPasswordTokenResponse {
+    suspend fun resetPasswordWithToken(
+        token: String,
+        new_password: String
+    ): ResetPasswordTokenResponse {
         return RetrofitInstance.api.resetPasswordWithToken(token, new_password)
+    }
+
+    suspend fun removeProduct(
+        token: String,
+        product_id: String
+    ): RemoveProductResponse{
+        return RetrofitInstance.api.removeProduct(token, product_id)
     }
 
     suspend fun addOrder(
@@ -82,6 +94,29 @@ class MarketRepository {
             description,
             price_per_unit,
             units,
-            owner_username)
+            owner_username
+        )
+    }
+
+    suspend fun updateProduct(
+        token: String,
+        product_id: String,
+        price_per_unit: Double,
+        is_active: Boolean,
+        title: String,
+        rating: String,
+        amount_type: String,
+        price_type: String
+    ): UpdateProductResponse {
+        return RetrofitInstance.api.updateProduct(
+            token,
+            product_id,
+            price_per_unit,
+            is_active,
+            title,
+            rating,
+            amount_type,
+            price_type
+        )
     }
 }

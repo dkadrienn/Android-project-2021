@@ -1,5 +1,6 @@
 package com.example.bazaar.fragment
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -10,9 +11,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,14 +26,18 @@ import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
 import com.example.bazaar.viewmodel.ProductListViewModel
 import com.example.bazaar.viewmodel.ProductListViewModelFactory
+import com.example.bazaar.viewmodel.RemoveProductViewModel
+import com.example.bazaar.viewmodel.RemoveProductViewModelFactory
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener {
+class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener, RecycleViewAdapter.OnItemLongClickListener {
     private val TAG = this.javaClass.simpleName
     private var myName: String? = null
 
     lateinit var listViewModel: ProductListViewModel
+    lateinit var removeViewModel: RemoveProductViewModel
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: RecycleViewAdapter
 
@@ -48,6 +55,9 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
         Log.d(TAG, "My name is:$myName")
         val factory = ProductListViewModelFactory(requireContext(), MarketRepository())
         listViewModel = ViewModelProvider(this, factory).get(ProductListViewModel::class.java)
+
+        val factoryRemove = RemoveProductViewModelFactory(requireContext(), MarketRepository())
+        removeViewModel = ViewModelProvider(this, factoryRemove).get(RemoveProductViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -138,7 +148,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
     }
 
     private fun setupRecyclerView() {
-        adapter = RecycleViewAdapter(ArrayList<Product>(), this.requireContext(), this)
+        adapter = RecycleViewAdapter(ArrayList<Product>(), this.requireContext(), this, this)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this.context)
         recycler_view.addItemDecoration(
@@ -162,12 +172,38 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             "unit" to product.units,
             "amount_type" to product.amount_type,
             "description" to product.description,
-            "rating" to product.rating
+            "rating" to product.rating,
+            "product_id" to product.product_id
         )
         myProductDetailFragment.arguments = bundle
-        Log.d("OnProductClick", "Clicked" + product.price_type)
+        Log.d("OnProductClick", "Clicked" + product.product_id)
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.mainFragment, myProductDetailFragment)?.addToBackStack(null)
             ?.commit()
+    }
+
+    override fun onItemLongClick(product: Product) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Delete")
+        builder.setMessage("Are you sure you want to delete this product?")
+        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+            removeViewModel.removed.value.let {
+                if (it != null)
+                    it.product_id = product.product_id
+            }
+            lifecycleScope.launch{
+                removeViewModel.removeProduct()
+            }
+        }
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)
+            ?.commit()
+
+        builder.setNegativeButton(android.R.string.no) { dialog, which ->
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)
+                ?.commit()
+        }
+        builder.show()
     }
 }

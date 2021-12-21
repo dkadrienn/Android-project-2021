@@ -14,7 +14,8 @@ import java.text.SimpleDateFormat
 class OrderRecyclerViewAdapter(
     private var list: ArrayList<Order>,
     private val context: Context,
-    private val listener: OnItemClickListener,
+    private val listener: OnItemClickListener
+//    private val longListener: OnItemLongClickListener
 ) :
     RecyclerView.Adapter<OrderRecyclerViewAdapter.OrderRecycleViewViewHolder>() {
 
@@ -42,12 +43,17 @@ class OrderRecyclerViewAdapter(
         override fun onClick(p0: View?) {
             val current = list[bindingAdapterPosition]
             listener.onItemClick(current)
+//            longListener.onItemLongClick(current)
         }
     }
 
     interface OnItemClickListener {
         fun onItemClick(order: Order)
     }
+
+//    interface OnItemLongClickListener {
+//        fun onItemLongClick(order: Order)
+//    }
 
     // 2. Called only a few times = number of items on screen + a few more ones
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderRecycleViewViewHolder {

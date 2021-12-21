@@ -23,6 +23,7 @@ private const val ARG_UNIT = "unit"
 private const val ARG_AMOUNT_TYPE = "amount_type"
 private const val ARG_DESCRIPTION = "description"
 private const val ARG_RATING = "rating"
+private const val ARG_PRODUCT_ID = "product_id"
 
 class MyProductDetailFragment : BaseFragment() {
     private val TAG = this.javaClass.simpleName
@@ -37,6 +38,7 @@ class MyProductDetailFragment : BaseFragment() {
     private var amount_type: String? = null
     private var description: String? = null
     private var rating: Double? = null
+    private var product_id: String? = null
 
     private lateinit var usernameTextView: TextView
     private lateinit var dateTextView: TextView
@@ -62,6 +64,7 @@ class MyProductDetailFragment : BaseFragment() {
             amount_type = it.getString(ARG_AMOUNT_TYPE)
             description = it.getString(ARG_DESCRIPTION)
             rating = it.getDouble(ARG_RATING)
+            product_id = it.getString(ARG_PRODUCT_ID)
 //            images = it.getStringArrayList(ARG_IMAGES)
         }
 
@@ -133,7 +136,8 @@ class MyProductDetailFragment : BaseFragment() {
             "unit" to unit!!.replace("\"", ""),
             "amount_type" to amount_type!!.replace("\"", ""),
             "description" to description!!.replace("\"", ""),
-            "rating" to rating
+            "rating" to rating,
+            "product_id" to product_id
         )
         editProductFragment.arguments = bundle
 

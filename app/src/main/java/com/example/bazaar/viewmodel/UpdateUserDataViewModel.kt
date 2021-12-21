@@ -6,15 +6,15 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.bazaar.model.Profile
 import com.example.bazaar.model.UpdateUserDataRequest
-import com.example.bazaar.model.UpdatedData
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
 
 class UpdateUserDataViewModel(val context: Context, val repository: MarketRepository) :
     ViewModel() {
     val TAG = Class::class.java.simpleName
-    var updated = MutableLiveData<UpdatedData>()
+    var updated = MutableLiveData<Profile>()
     val sharedPreferences: SharedPreferences = context.getSharedPreferences(
         Constants.SHARED_PREF_FILE,
         Context.MODE_PRIVATE
@@ -22,26 +22,26 @@ class UpdateUserDataViewModel(val context: Context, val repository: MarketReposi
     val token = sharedPreferences.getString(Constants.sharedPrefKeyToken, "token")
 
     init {
-        updated.value = UpdatedData()
+        updated.value = Profile()
     }
 
     suspend fun updateUserData() {
         Log.d(TAG, "New data " + updated.value.toString())
         val request = UpdateUserDataRequest(
             username = updated.value!!.username,
-            email = updated.value!!.email,
+//            email = updated.value!!.email,
             phone_number = updated.value!!.phone_number
         )
         try {
             val result = repository.updateUserData(
                 token!!,
                 request.username,
-                request.email,
+//                request.email,
                 request.phone_number
             )
             val edit = sharedPreferences.edit()
             edit.putString(Constants.sharedPrefKeyUsername, result.updatedData.username)
-            edit.putString(Constants.sharedPrefKeyEmail, result.updatedData.email)
+//            edit.putString(Constants.sharedPrefKeyEmail, result.updatedData.email)
             edit.putString(
                 Constants.sharedPrefKeyPhoneNr,
                 result.updatedData.phone_number.toString()

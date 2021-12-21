@@ -2,7 +2,7 @@ package com.example.bazaar.fragment
 
 import android.os.Bundle
 import android.text.Editable
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +11,15 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.bazaar.R
-import java.text.DateFormat
+import com.example.bazaar.repository.MarketRepository
+import com.example.bazaar.viewmodel.UpdateProductViewModel
+import com.example.bazaar.viewmodel.UpdateProductViewModelFactory
+import kotlinx.android.synthetic.main.fragment_add_product.*
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 private const val ARG_USERNAME = "username"
@@ -25,9 +32,11 @@ private const val ARG_UNIT = "unit"
 private const val ARG_AMOUNT_TYPE = "amount_type"
 private const val ARG_DESCRIPTION = "description"
 private const val ARG_RATING = "rating"
+private const val ARG_PRODUCT_ID = "product_id"
 
 class EditProductFragment : Fragment() {
     private val TAG = this.javaClass.simpleName
+    private lateinit var editProductViewModel: UpdateProductViewModel
 
     private var username: String? = null
     private var creation_time: Long? = null
@@ -39,6 +48,18 @@ class EditProductFragment : Fragment() {
     private var amount_type: String? = null
     private var description: String? = null
     private var rating: Double? = null
+    private var product_id: String? = null
+
+    lateinit var titleEditText : EditText
+    lateinit var priceEditText: EditText
+    lateinit var priceTypeEditText : EditText
+    lateinit var unitEditText : EditText
+    lateinit var unitTypeEditText : EditText
+    lateinit var descriptionEditText : EditText
+    lateinit var ratingEditText : EditText
+    lateinit var dateTextView : TextView
+    lateinit var toggleButton: SwitchCompat
+    lateinit var stateImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +74,12 @@ class EditProductFragment : Fragment() {
             amount_type = it.getString(ARG_AMOUNT_TYPE)
             description = it.getString(ARG_DESCRIPTION)
             rating = it.getDouble(ARG_RATING)
+            product_id = it.getString(ARG_PRODUCT_ID)
         }
+
+        val factory = UpdateProductViewModelFactory(this.requireContext(), MarketRepository())
+        editProductViewModel =
+            ViewModelProvider(this, factory).get(UpdateProductViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -63,20 +89,19 @@ class EditProductFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add_product, container, false)
 
-        val toggleButton = view.findViewById<SwitchCompat>(R.id.sliderAddP)
-        val stateImage = view.findViewById<ImageView>(R.id.stateImageView)
-        val buttonLaunch = view.findViewById<Button>(R.id.buttonLaunchAddP)
+        toggleButton = view.findViewById<SwitchCompat>(R.id.sliderAddP)
+        stateImage = view.findViewById<ImageView>(R.id.stateImageView)
 
-        val titleEditText = view.findViewById<EditText>(R.id.titleAddP)
-        val priceEditText = view.findViewById<EditText>(R.id.priceAddP)
-        val priceTypeEditText = view.findViewById<EditText>(R.id.priceTypeAddP)
-        val unitEditText = view.findViewById<EditText>(R.id.amountAddP)
-        val unitTypeEditText = view.findViewById<EditText>(R.id.amountTypeAddP)
-        val descriptionEditText = view.findViewById<EditText>(R.id.descriptionAddP)
-        val ratingEditText = view.findViewById<EditText>(R.id.ratingAddP)
-        val dateTextView = view.findViewById<TextView>(R.id.dateAddP)
+        titleEditText = view.findViewById<EditText>(R.id.titleAddP)
+        priceEditText = view.findViewById<EditText>(R.id.priceAddP)
+        priceTypeEditText = view.findViewById<EditText>(R.id.priceTypeAddP)
+        unitEditText = view.findViewById<EditText>(R.id.amountAddP)
+        unitTypeEditText = view.findViewById<EditText>(R.id.amountTypeAddP)
+        descriptionEditText = view.findViewById<EditText>(R.id.descriptionAddP)
+        ratingEditText = view.findViewById<EditText>(R.id.ratingAddP)
+        dateTextView = view.findViewById<TextView>(R.id.dateAddP)
 
-        if (is_active){
+        if (is_active) {
             toggleButton.toggle()
             stateImage.setImageResource(R.drawable.ic_active)
         }
@@ -101,5 +126,31 @@ class EditProductFragment : Fragment() {
         return view
     }
 
-    fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val buttonLaunch = view.findViewById<Button>(R.id.buttonLaunchAddP)
+
+        buttonLaunch.setOnClickListener {
+            Log.d(TAG, editProductViewModel.updated.value.toString())
+            editProductViewModel.updated.value.let {
+                if (it != null) {
+                    it.product_id = product_id!!.replace("\"","")
+                    it.price_per_unit = priceEditText.text.toString().toDouble()
+                    it.is_active = toggleButton.isChecked
+                    it.title = titleEditText.text.toString()
+                    it.rating = ratingEditText.text.toString()
+                    it.amount_type = unitTypeEditText.text.toString()
+                    it.price_type = priceTypeEditText.text.toString()
+                }
+            }
+            lifecycleScope.launch {
+                editProductViewModel.updateProduct()
+            }
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.mainFragment, MyMarketFragment())?.addToBackStack(null)
+                ?.commit()
+        }
+    }
+
+    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 }

@@ -14,7 +14,7 @@ class RecycleViewAdapter(
     private var list: ArrayList<Product>,
     private val context: Context,
     private val listener: OnItemClickListener,
-//    private val listenerLong: OnItemLongClickListener
+    private val longListener: OnItemLongClickListener
 ) :
     RecyclerView.Adapter<RecycleViewAdapter.RecycleViewViewHolder>() {
 
@@ -36,6 +36,7 @@ class RecycleViewAdapter(
         override fun onClick(p0: View?) {
             val current = list[bindingAdapterPosition]
             listener.onItemClick(current)
+            longListener.onItemLongClick(current)
         }
 
 
@@ -46,7 +47,7 @@ class RecycleViewAdapter(
     }
 
     interface OnItemLongClickListener{
-        fun onItemLongClick(position: Int)
+        fun onItemLongClick(product: Product)
     }
 
     // 2. Called only a few times = number of items on screen + a few more ones

@@ -38,14 +38,14 @@ interface MarketAPI {
     suspend fun getOrders(@Header("token") token: String, @Header("limit") limit: Int): OrderResponse
 
     @POST(Constants.REMOVE_PRODUCT_URL)
-    suspend fun removeProduct(@Header("token") token: String, @Path("product_id") product_id: String) : RemoveProductResponse
+    suspend fun removeProduct(@Header("token") token: String, @Query("product_id") product_id: String) : RemoveProductResponse
 
     @Multipart
     @POST(Constants.USER_UPDATE_URL)
     suspend fun updateUserData(
         @Header("token") token: String,
         @Part("username") username: String,
-        @Part("email") email: String,
+//        @Part("email") email: String,
         @Part("phone_number") phone_number: Int
     ): UpdateUserDataResponse
 
@@ -62,4 +62,27 @@ interface MarketAPI {
         @Part("units") units: String,
         @Part("owner_username") is_active: String
     ): AddOrderResponse
+
+    @Multipart
+    @POST(Constants.UPDATE_PRODUCT_URL)
+    suspend fun updateProduct(
+        @Header("token") token: String,
+        @Query("product_id") product_id: String,
+        @Part("price_per_unit") price_per_unit: Double,
+        @Part("is_active") is_active: Boolean,
+        @Part("title") title: String,
+        @Part("rating") rating: String,
+        @Part("amount_type") amount_type: String,
+        @Part("price_type") price_type: String
+    ): UpdateProductResponse
+
+//    @Multipart
+//    @POST(Constants.UPDATE_ORDER_URL)
+//    suspend fun updateOrder(
+//        @Header("token") token: String,
+//        @Query("order_id") order_id: String,
+//        @Part("price_per_unit") price_per_unit: String,
+//        @Part("status") string: String,
+//        @Part("title") title: String
+//    ): UpdateOrderResponse
 }
