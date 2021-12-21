@@ -51,4 +51,15 @@ interface MarketAPI {
 
     @GET(Constants.PASSWORD_RESET_TOKEN_URL)
     suspend fun resetPasswordWithToken(@Header("token") token: String, @Header("new_password") new_password: String): ResetPasswordTokenResponse
+
+    @Multipart
+    @POST(Constants.ADD_ORDER_URL)
+    suspend fun addOrder(
+        @Header("token") token: String,
+        @Part("title") title: String,
+        @Part("description") description: String,
+        @Part("price_per_unit") price_per_unit: String,
+        @Part("units") units: String,
+        @Part("owner_username") is_active: String
+    ): AddOrderResponse
 }

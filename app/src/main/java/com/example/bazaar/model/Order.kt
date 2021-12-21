@@ -6,6 +6,7 @@ data class Order(
     var order_id: String = "",
     var username: String = "",
     var status: String = "",
+    var owner_username: String = "",
     var price_per_unit: String = "",
     var price_type: String = "",
     var units: String = "",

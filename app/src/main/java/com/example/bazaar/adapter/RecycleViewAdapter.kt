@@ -71,6 +71,8 @@ class RecycleViewAdapter(
             holder.imageView_state.setImageResource(R.drawable.ic_inactive)
         }
 
+
+
 //        val images = currentItem.images
 //        if(images.isNotEmpty()) {
 //            Log.d("xxx", "#num_images: ${images.size}")

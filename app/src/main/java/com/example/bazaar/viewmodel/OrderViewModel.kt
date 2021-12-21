@@ -29,7 +29,7 @@ class OrderViewModel(val context: Context, val repository: MarketRepository) : V
         viewModelScope.launch {
             try {
                 val result =
-                    repository.getOrders(token.toString(), 200)
+                    repository.getOrders(token.toString(), 500)
                 orders.value = result.orders
                 Log.d(TAG, "OrderViewModel - #products:  ${result.item_count}")
             } catch (e: Exception) {

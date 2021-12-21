@@ -9,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.R
-import com.example.bazaar.model.Product
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
 import com.example.bazaar.viewmodel.OtherUserViewModel
@@ -35,6 +35,7 @@ class ProductDetailFragment : BaseFragment() {
     private val TAG = this.javaClass.simpleName
 
     private lateinit var otherUserViewModel: OtherUserViewModel
+
     //other user
     var otherUserEmail: String? = null
     var otherUserPhoneNr: Int? = null
@@ -57,6 +58,7 @@ class ProductDetailFragment : BaseFragment() {
     private lateinit var isActiveImageView: ImageView
     private lateinit var unitTextView: TextView
     private lateinit var descriptionTextView: TextView
+    private lateinit var orderImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -167,6 +169,31 @@ class ProductDetailFragment : BaseFragment() {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.mainFragment, otherProfileFragment)?.addToBackStack(null)
                 ?.commit()
+        }
+
+        //order
+        orderImageView = view.findViewById(R.id.buyProductButtonDetailPage)
+        val addOrderFragment = AddOrderFragment()
+        val bundle = bundleOf(
+            "username" to username,
+            "creation_time" to creation_time,
+            "title" to title,
+            "price" to price,
+            "price_type" to price_type,
+            "unit" to unit
+        )
+        addOrderFragment.arguments = bundle
+        orderImageView.setOnClickListener {
+            if (is_active) {
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.mainFragment, addOrderFragment)?.addToBackStack(null)?.commit()
+            } else {
+                Toast.makeText(
+                    context,
+                    "This product is unavailable at the moment!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 }

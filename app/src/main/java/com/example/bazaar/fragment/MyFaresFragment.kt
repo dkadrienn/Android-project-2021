@@ -63,8 +63,8 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
         recycler_view = view.findViewById(R.id.myFaresRecycleView)
         setupRecyclerView()
         listViewModel.orders.observe(viewLifecycleOwner) {
-            mySales = listViewModel.orders.value!!.filter { it.username == myName }
-            adapter.setData(listViewModel.orders.value as ArrayList<Order>)
+            mySales = listViewModel.orders.value!!.filter { it.owner_username == myName }
+            adapter.setData(mySales as ArrayList<Order>)
             adapter.notifyDataSetChanged()
         }
         searchBar = view.findViewById(R.id.searchViewMyFares)
@@ -113,8 +113,8 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
 
         ongoingSalesButton.setOnClickListener {
             listViewModel.orders.observe(viewLifecycleOwner) {
-                mySales = listViewModel.orders.value!!.filter { it.username == myName }
-                adapter.setData(listViewModel.orders.value as ArrayList<Order>)
+                mySales = listViewModel.orders.value!!.filter { it.owner_username == myName }
+                adapter.setData(mySales as ArrayList<Order>)
                 adapter.notifyDataSetChanged()
             }
         }

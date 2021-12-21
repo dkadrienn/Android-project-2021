@@ -64,8 +64,24 @@ class MarketRepository {
             phone_number)
     }
 
-
     suspend fun resetPasswordWithToken(token: String, new_password:String): ResetPasswordTokenResponse {
         return RetrofitInstance.api.resetPasswordWithToken(token, new_password)
+    }
+
+    suspend fun addOrder(
+        token: String,
+        title: String,
+        description: String,
+        price_per_unit: String,
+        units: String,
+        owner_username: String
+    ): AddOrderResponse {
+        return RetrofitInstance.api.addOrder(
+            token,
+            title,
+            description,
+            price_per_unit,
+            units,
+            owner_username)
     }
 }

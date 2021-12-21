@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.AddOrderFragment"
+    android:padding="@dimen/logInPadding">
+
+    <TextView
+        android:id="@+id/titleAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/my_order"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/closeAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_close"/>
+
+    <View
+        android:id="@+id/separatorAddO"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separatorHigh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleAddO"
+        app:layout_constraintBottom_toTopOf="@id/ownerProfileAddO"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:background="@color/lighterGray"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ownerProfileAddO"
+        android:layout_width="@dimen/profileSize"
+        android:layout_height="@dimen/profileSize"
+        android:src="@drawable/ic_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separatorAddO"
+        app:layout_constraintEnd_toStartOf="@id/ownerNameAddO"
+        android:layout_marginTop="@dimen/marginBetweenElements" />
+
+    <TextView
+        android:id="@+id/ownerNameAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginBetweenElements"
+        android:layout_marginTop="@dimen/profileSize"
+        app:layout_constraintStart_toEndOf="@id/ownerProfileAddO"
+        app:layout_constraintTop_toBottomOf="@id/separatorAddO"
+        android:textColor="@color/mainBg"
+        android:hint="@string/username"/>
+
+    <TextView
+        android:id="@+id/itemTitleAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ownerProfileAddO"
+        app:layout_constraintTop_toBottomOf="@id/ownerProfileAddO"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        android:textSize="@dimen/titleTextSize"
+        android:hint="@string/title"
+        android:textColor="@color/mainBg"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/priceAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/itemTitleAddO"
+        app:layout_constraintTop_toBottomOf="@id/itemTitleAddO"
+        android:hint="@string/price"
+        android:textSize="@dimen/textSize"
+        android:textColor="@color/mainBg"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/statusAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceAddO"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        android:src="@drawable/ic_active"/>
+
+    <TextView
+        android:id="@+id/creationDateAddO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/separator2AddO"
+        android:layout_margin="@dimen/marginBetweenElements"
+        android:textColor="@color/mainBg"
+        android:hint="@string/date"/>
+
+    <View
+        android:id="@+id/separator2AddO"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separatorHigh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusAddO"
+        android:layout_marginTop="@dimen/marginCustomEditText"
+        android:background="@color/lighterGray"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/amountAddO"
+        app:layout_constraintTop_toBottomOf="@id/separator2AddO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginBetweenElements">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/amountTextAddO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/amount" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/detailAddO"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/amountAddO"
+        android:layout_margin="@dimen/cardMargin"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/detailTextAddO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/product_detail" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sendMyOrderAddO"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailAddO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        android:background="@drawable/gray_button_bg"
+        android:text="@string/send_my_order"
+        android:textColor="@android:color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
