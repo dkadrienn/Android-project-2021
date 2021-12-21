@@ -25,11 +25,11 @@ data class RegisterRequest(
     @SerializedName("phone_number")
     var phone_number: Int,
 
-    @SerializedName("firebase_token")
-    var firebase_token: String,
-
-    @SerializedName("userImage")
-    val userImage: File
+//    @SerializedName("firebase_token")
+//    var firebase_token: String,
+//
+//    @SerializedName("userImage")
+//    val userImage: File
 )
 
 data class RegisterResponse(

@@ -161,6 +161,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
     }
 
     override fun onItemClick(product: Product) {
+        Log.d(TAG, "Click simple")
         val myProductDetailFragment = MyProductDetailFragment()
         val bundle = bundleOf(
             "username" to product.username,
@@ -193,17 +194,22 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
             }
             lifecycleScope.launch{
                 removeViewModel.removeProduct()
+                adapter.notifyDataSetChanged()
+//            activity?.supportFragmentManager?.beginTransaction()
+//            ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)
+//            ?.commit()
             }
         }
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)
-            ?.commit()
+//        activity?.supportFragmentManager?.beginTransaction()
+//            ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)
+//            ?.commit()
 
         builder.setNegativeButton(android.R.string.no) { dialog, which ->
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)
+                ?.replace(R.id.mainFragment, MyMarketFragment())?.addToBackStack(null)
                 ?.commit()
         }
         builder.show()
+        Log.d(TAG, "Click long")
     }
 }

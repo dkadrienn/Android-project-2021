@@ -8,16 +8,16 @@ data class Profile(
 )
 
 data class UpdatedData(
-    var _id: String = "",
+//    var _id: String = "",
     var username: String = "",
-    var password: String = "",
+//    var password: String = "",
     var phone_number: Int = 0,
     var email: String = "",
     var is_activated: Boolean = true,
-    var image_url: String = "",
-    var image_id: String = "",
+//    var image_url: String = "",
+//    var image_id: String = "",
     var creation_time: String = "",
-    var __v : Int = 0
+    var token: String = ""
 )
 
 data class UpdateUserDataRequest(

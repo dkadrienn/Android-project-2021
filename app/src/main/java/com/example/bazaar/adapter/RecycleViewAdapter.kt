@@ -20,7 +20,7 @@ class RecycleViewAdapter(
 
     // 1. user defined ViewHolder type - Embedded class!
     inner class RecycleViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+        View.OnClickListener, View.OnLongClickListener {
 
         val textView_name: TextView = itemView.findViewById(R.id.itemName)
         val textView_price: TextView = itemView.findViewById(R.id.itemPrice)
@@ -29,16 +29,21 @@ class RecycleViewAdapter(
         val imageView_seller: ImageView = itemView.findViewById(R.id.sellerProfile)
         val imageView_state: ImageView = itemView.findViewById(R.id.itemState)
 
-        init {
-            itemView.setOnClickListener(this)
-        }
+            init {
+                itemView.setOnClickListener(this)
+                itemView.setOnLongClickListener(this)
+            }
 
         override fun onClick(p0: View?) {
             val current = list[bindingAdapterPosition]
             listener.onItemClick(current)
-            longListener.onItemLongClick(current)
         }
 
+        override fun onLongClick(p0: View?): Boolean {
+            val current = list[bindingAdapterPosition]
+            longListener.onItemLongClick(current)
+            return true
+        }
 
     }
 
@@ -71,8 +76,6 @@ class RecycleViewAdapter(
         } else{
             holder.imageView_state.setImageResource(R.drawable.ic_inactive)
         }
-
-
 
 //        val images = currentItem.images
 //        if(images.isNotEmpty()) {

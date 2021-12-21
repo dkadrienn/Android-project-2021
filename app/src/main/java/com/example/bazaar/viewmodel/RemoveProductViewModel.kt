@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.bazaar.model.RemoveProduct
 import com.example.bazaar.model.RemoveProductResponse
 import com.example.bazaar.model.UpdateProduct
 import com.example.bazaar.repository.MarketRepository
@@ -25,7 +26,7 @@ class RemoveProductViewModel(val context: Context, val repository: MarketReposit
     }
 
     suspend fun removeProduct() {
-        val request = UpdateProduct(
+        val request = RemoveProduct(
             product_id = removed.value!!.product_id
         )
         try {

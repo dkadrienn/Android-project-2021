@@ -88,8 +88,8 @@ class ProfileFragment : BaseFragment() {
 
             viewModel.updated.value.let {
                 if (it != null) {
-//                    if (usernameEditText.text.toString().replace("\"", "").contains(myName!!))
-                    it.username = usernameEditText.text.toString().replace("\"", "")
+                    if (usernameEditText.text.toString().replace("\"", "") != myName)
+                        it.username = usernameEditText.text.toString().replace("\"", "")
 //                    if (emailEditText.text.toString().replace("\"", "").contains(myEmail!!))
 //                        it.email = emailEditText.text.toString().replace("\"", "")
                     it.phone_number = phoneNrEditText.text.toString().replace("\"", "").toInt()
@@ -106,7 +106,8 @@ class ProfileFragment : BaseFragment() {
             edit.apply()
             edit.commit()
 
-            activity?.supportFragmentManager?.popBackStack()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.mainFragment, TimelineFragment())?.addToBackStack(null)?.commit()
         }
         return view
     }

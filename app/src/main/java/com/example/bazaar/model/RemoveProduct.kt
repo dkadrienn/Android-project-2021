@@ -2,6 +2,11 @@ package com.example.bazaar.model
 
 import com.google.gson.annotations.SerializedName
 
+data class RemoveProduct(
+    @SerializedName("product_id")
+    var product_id: String = ""
+)
+
 data class RemoveProductResponse(
     @SerializedName("message")
     var message: String = "",
