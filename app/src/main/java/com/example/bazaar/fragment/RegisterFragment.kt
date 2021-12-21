@@ -62,11 +62,7 @@ class RegisterFragment : Fragment() {
                     it.username = usernameRegister.text.toString()
                     it.email = emailRegister.text.toString()
                     it.password = passwordRegister.text.toString()
-                    try {
-                        it.phone_number = Integer.parseInt(phoneNrRegister.text.toString())
-                    }catch (e: Exception){
-                        Log.d(TAG, "No phone nr")
-                    }
+                    it.phone_number = phoneNrRegister.text.toString().toInt()
                 }
             }
             lifecycleScope.launch {

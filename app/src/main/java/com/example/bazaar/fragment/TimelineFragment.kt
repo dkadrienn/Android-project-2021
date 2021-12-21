@@ -17,21 +17,19 @@ import com.example.bazaar.R
 import com.example.bazaar.adapter.RecycleViewAdapter
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.MarketRepository
-import com.example.bazaar.viewmodel.OtherUserViewModel
-import com.example.bazaar.viewmodel.OtherUserViewModelFactory
 import com.example.bazaar.viewmodel.ProductListViewModel
 import com.example.bazaar.viewmodel.ProductListViewModelFactory
 import java.util.*
 import kotlin.collections.ArrayList
 
-class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener {
+class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener, RecycleViewAdapter.OnItemLongClickListener {
     private val TAG = this.javaClass.simpleName
 
     lateinit var listViewModel: ProductListViewModel
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: RecycleViewAdapter
 
-    private lateinit var searchBar : SearchView
+    private lateinit var searchBar: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,27 +59,35 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-            searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(p0: String?): Boolean {
-                    val searchText = p0!!.toLowerCase(Locale.getDefault())
-                    Log.d(TAG, searchText)
-                    if(searchText.isNotEmpty()){
-                        adapter.setData(ArrayList(listViewModel.products.value?.filter { it.title.toLowerCase(Locale.getDefault()).contains(searchText) }))
-                        adapter.notifyDataSetChanged()
-                    }
-                    return false
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                val searchText = p0!!.toLowerCase(Locale.getDefault())
+                Log.d(TAG, searchText)
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(listViewModel.products.value?.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
+                    adapter.notifyDataSetChanged()
                 }
+                return false
+            }
 
-                override fun onQueryTextChange(p0: String?): Boolean {
-                    val searchText = p0!!.toLowerCase(Locale.getDefault())
-                    Log.d(TAG, searchText)
-                    if(searchText.isNotEmpty()){
-                        adapter.setData(ArrayList(listViewModel.products.value?.filter { it.title.toLowerCase(Locale.getDefault()).contains(searchText) }))
-                        adapter.notifyDataSetChanged()
-                    }
-                    return false
+            override fun onQueryTextChange(p0: String?): Boolean {
+                val searchText = p0!!.toLowerCase(Locale.getDefault())
+                Log.d(TAG, searchText)
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(listViewModel.products.value?.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
+                    adapter.notifyDataSetChanged()
                 }
-            })
+                return false
+            }
+        })
     }
 
     override fun setTopBarElements(view: View) {
@@ -111,7 +117,7 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
     }
 
     private fun setupRecyclerView() {
-        adapter = RecycleViewAdapter(ArrayList<Product>(), this.requireContext(), this)
+        adapter = RecycleViewAdapter(ArrayList<Product>(), this.requireContext(), this, this)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this.context)
         recycler_view.addItemDecoration(
@@ -134,12 +140,18 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener 
             "price_type" to product.price_type,
             "is_active" to product.is_active,
             "unit" to product.units,
-            "description" to product.description
+            "amount_type" to product.amount_type,
+            "description" to product.description,
+            "product_id" to product.product_id
         )
         productDetailFragment.arguments = bundle
-        Log.d("OnProductClick", "Clicked" + product.price_type)
+        Log.d("OnProductClick", "Clicked " + product.product_id)
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.mainFragment, productDetailFragment)?.addToBackStack(null)
             ?.commit()
+    }
+
+    override fun onItemLongClick(product: Product) {
+
     }
 }

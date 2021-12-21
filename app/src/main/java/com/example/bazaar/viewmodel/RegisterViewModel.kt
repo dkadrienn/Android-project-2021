@@ -25,8 +25,8 @@ class RegisterViewModel(val context: Context, val repository: MarketRepository) 
                     password = register.value!!.password,
                     email = register.value!!.email,
                     phone_number = register.value!!.phone_number,
-                    firebase_token = register.value!!.firebase_token,
-                    userImage = register.value!!.userImage!!
+//                    firebase_token = register.value!!.firebase_token,
+//                    userImage = register.value!!.userImage!!
                 )
             val result = repository.register(request)
         } catch (e: Exception) {

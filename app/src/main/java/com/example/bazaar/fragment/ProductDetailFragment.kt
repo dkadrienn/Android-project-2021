@@ -9,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.R
-import com.example.bazaar.model.Product
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
 import com.example.bazaar.viewmodel.OtherUserViewModel
@@ -28,12 +28,14 @@ private const val ARG_PRICE = "price"
 private const val ARG_PRICE_TYPE = "price_type"
 private const val ARG_IS_ACTIVE = "is_active"
 private const val ARG_UNIT = "unit"
+private const val ARG_AMOUNT_TYPE = "amount_type"
 private const val ARG_DESCRIPTION = "description"
 
 class ProductDetailFragment : BaseFragment() {
     private val TAG = this.javaClass.simpleName
 
     private lateinit var otherUserViewModel: OtherUserViewModel
+
     //other user
     var otherUserEmail: String? = null
     var otherUserPhoneNr: Int? = null
@@ -45,6 +47,7 @@ class ProductDetailFragment : BaseFragment() {
     private var price_type: String? = null
     private var is_active: Boolean = false
     private var unit: String? = null
+    private var amount_type: String? = null
     private var description: String? = null
 
     private lateinit var usernameTextView: TextView
@@ -55,6 +58,7 @@ class ProductDetailFragment : BaseFragment() {
     private lateinit var isActiveImageView: ImageView
     private lateinit var unitTextView: TextView
     private lateinit var descriptionTextView: TextView
+    private lateinit var orderImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +74,7 @@ class ProductDetailFragment : BaseFragment() {
             price_type = it.getString(ARG_PRICE_TYPE)
             is_active = it.getBoolean(ARG_IS_ACTIVE)
             unit = it.getString(ARG_UNIT)
+            amount_type = it.getString(ARG_AMOUNT_TYPE)
             description = it.getString(ARG_DESCRIPTION)
 //            images = it.getStringArrayList(ARG_IMAGES)
         }
@@ -139,16 +144,16 @@ class ProductDetailFragment : BaseFragment() {
         val date = Date(creation_time!!)
         val format = SimpleDateFormat("yyyy.MM.dd")
         dateTextView.apply { text = format.format(date).toString() }
-        titleTextView.apply { text = title }
-        priceTextView.apply { text = price }
-        priceTypeTextView.apply { text = price_type }
+        titleTextView.apply { text = title!!.replace("\"", "") }
+        priceTextView.apply { text = price!!.replace("\"", "") }
+        priceTypeTextView.apply { text = price_type!!.replace("\"", "") }
         if (is_active) {
             isActiveImageView.setImageResource(R.drawable.ic_active)
         } else {
             isActiveImageView.setImageResource(R.drawable.ic_inactive)
         }
-        unitTextView.apply { text = unit }
-        descriptionTextView.apply { text = description }
+        unitTextView.apply { text = unit!!.replace("\"", "") + amount_type!!.replace("\"", "") }
+        descriptionTextView.apply { text = description!!.replace("\"", "") }
 
         //seller profile
         val sellerProfile = view.findViewById<ImageView>(R.id.sellerProfileDetailPage)
@@ -164,6 +169,31 @@ class ProductDetailFragment : BaseFragment() {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.mainFragment, otherProfileFragment)?.addToBackStack(null)
                 ?.commit()
+        }
+
+        //order
+        orderImageView = view.findViewById(R.id.buyProductButtonDetailPage)
+        val addOrderFragment = AddOrderFragment()
+        val bundle = bundleOf(
+            "username" to username,
+            "creation_time" to creation_time,
+            "title" to title,
+            "price" to price,
+            "price_type" to price_type,
+            "unit" to unit
+        )
+        addOrderFragment.arguments = bundle
+        orderImageView.setOnClickListener {
+            if (is_active) {
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.mainFragment, addOrderFragment)?.addToBackStack(null)?.commit()
+            } else {
+                Toast.makeText(
+                    context,
+                    "This product is unavailable at the moment!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 }

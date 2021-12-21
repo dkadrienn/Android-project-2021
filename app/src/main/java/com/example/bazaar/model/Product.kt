@@ -2,13 +2,6 @@ package com.example.bazaar.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Image(
-    val _id: String,
-    val image_id: String,
-    val image_name: String,
-    val image_path: String
-)
-
 data class Product(
     val rating: Double = 0.0,
     val amount_type: String = "",

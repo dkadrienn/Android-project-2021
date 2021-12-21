@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.repository.MarketRepository
 
-class UpdateProfileViewModelFactory(
+class PasswordResetTokenViewModelFactory(
     private val context: Context,
     private val repository: MarketRepository
-) :
-    ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return UpdateProfileViewModel(context, repository) as T
+        return PasswordResetTokenViewModel(context, repository) as T
     }
 }
