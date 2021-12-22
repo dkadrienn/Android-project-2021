@@ -129,15 +129,15 @@ class MyProductDetailFragment : BaseFragment() {
 
         val editProductFragment = EditProductFragment()
         val bundle = bundleOf(
-            "username" to username!!.replace("\"", ""),
+            "username" to username!!.replace("\"", "").replace("\\", ""),
             "creation_time" to creation_time,
-            "title" to title!!.replace("\"", ""),
-            "price" to price!!.replace("\"", ""),
-            "price_type" to price_type!!.replace("\"", ""),
+            "title" to title!!.replace("\"", "").replace("\\", ""),
+            "price" to price!!.replace("\"", "").replace("\\", ""),
+            "price_type" to price_type!!.replace("\"", "").replace("\\", ""),
             "is_active" to is_active,
-            "unit" to unit!!.replace("\"", ""),
-            "amount_type" to amount_type!!.replace("\"", ""),
-            "description" to description!!.replace("\"", ""),
+            "unit" to unit!!.replace("\"", "").replace("\\", ""),
+            "amount_type" to amount_type!!.replace("\"", "").replace("\\", ""),
+            "description" to description!!.replace("\"", "").replace("\\", ""),
             "rating" to rating,
             "product_id" to product_id
         )

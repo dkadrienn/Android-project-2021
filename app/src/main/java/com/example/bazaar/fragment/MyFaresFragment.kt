@@ -63,7 +63,7 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
         recycler_view = view.findViewById(R.id.myFaresRecycleView)
         setupRecyclerView()
         listViewModel.orders.observe(viewLifecycleOwner) {
-            mySales = listViewModel.orders.value!!.reversed().filter { it.owner_username == myName }
+            mySales = listViewModel.orders.value!!.reversed().filter { it.owner_username.replace("\"", "") == myName }
             adapter.setData(mySales as ArrayList<Order>)
             adapter.notifyDataSetChanged()
         }
@@ -114,7 +114,7 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
         ongoingSalesButton.setOnClickListener {
             listViewModel.orders.observe(viewLifecycleOwner) {
                 mySales =
-                    listViewModel.orders.value!!.reversed().filter { it.owner_username == myName }
+                    listViewModel.orders.value!!.reversed().filter { it.owner_username.replace("\"", "") == myName }
                 adapter.setData(mySales as ArrayList<Order>)
                 adapter.notifyDataSetChanged()
             }
@@ -122,7 +122,7 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
 
         ongoingOrdersButton.setOnClickListener {
             listViewModel.orders.observe(viewLifecycleOwner) {
-                myOrders = listViewModel.orders.value!!.reversed().filter { it.username == myName }
+                myOrders = listViewModel.orders.value!!.reversed().filter { it.username.replace("\"", "") == myName }
                 adapter.setData(myOrders as ArrayList<Order>)
                 adapter.notifyDataSetChanged()
             }
@@ -174,17 +174,18 @@ class MyFaresFragment : BaseFragment(), OrderRecyclerViewAdapter.OnItemClickList
     }
 
     override fun onItemClick(order: Order) {
-        val orderDetailFragment = ProductDetailFragment()
+        val orderDetailFragment = OrderDetailFragment()
         val bundle = bundleOf(
-            "username" to order.username.replace("\"", ""),
+            "username" to order.username.replace("\"", "").replace("\\", ""),
             "creation_time" to order.creation_time,
-            "title" to order.title.replace("\"", ""),
-            "price" to order.price_per_unit.replace("\"", ""),
-            "price_type" to order.price_type.replace("\"", ""),
-            "status" to order.status.replace("\"", ""),
-            "unit" to order.units.replace("\"", ""),
-            "amount_type" to order.amount_type.replace("\"", ""),
-            "description" to order.description.replace("\"", "")
+            "title" to order.title.replace("\"", "").replace("\\", ""),
+            "price" to order.price_per_unit.replace("\"", "").replace("\\", ""),
+            "price_type" to order.price_type.replace("\"", "").replace("\\", ""),
+            "status" to order.status.replace("\"", "").replace("\\", ""),
+            "unit" to order.units.replace("\"", "").replace("\\", ""),
+            "amount_type" to order.amount_type.replace("\"", "").replace("\\", ""),
+            "description" to order.description.replace("\"", "").replace("\\", ""),
+            "ownername" to order.owner_username.replace("\"", "").replace("\\", "")
         )
         orderDetailFragment.arguments = bundle
         Log.d("OnProductClick", "Clicked" + order.price_type)

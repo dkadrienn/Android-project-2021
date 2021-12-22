@@ -70,7 +70,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
         recycler_view = view.findViewById(R.id.timeLineRecycleView)
         setupRecyclerView()
         listViewModel.products.observe(viewLifecycleOwner) {
-            myProducts = listViewModel.products.value!!.reversed().filter { it.username == myName }
+            myProducts = listViewModel.products.value!!.reversed().filter { it.username.replace("\"", "") == myName }
             adapter.setData(myProducts as ArrayList<Product>)
             adapter.notifyDataSetChanged()
         }
