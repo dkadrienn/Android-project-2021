@@ -4,8 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.OrderDetailFragment">
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/topBarProductDetailOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/fragment_base"/>
+
+    <ScrollView
+        android:id="@+id/scrollViewProductDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_below="@id/topBarProductDetailOrder">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".fragment.OrderDetailFragment">
 
             <ImageView
                 android:id="@+id/productImageDetailPageOrder"
