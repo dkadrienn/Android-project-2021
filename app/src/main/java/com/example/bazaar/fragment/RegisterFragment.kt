@@ -17,7 +17,6 @@ import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.viewmodel.RegisterViewModel
 import com.example.bazaar.viewmodel.RegisterViewModelFactory
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class RegisterFragment : Fragment() {
     val TAG = Class::class.java.simpleName

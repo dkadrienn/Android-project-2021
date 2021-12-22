@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bazaar.model.RemoveProduct
 import com.example.bazaar.model.RemoveProductResponse
-import com.example.bazaar.model.UpdateProduct
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.utils.Constants
 

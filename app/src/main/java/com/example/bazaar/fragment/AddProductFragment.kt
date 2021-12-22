@@ -95,10 +95,10 @@ class AddProductFragment : Fragment() {
             }
             lifecycleScope.launch {
                 addProductViewModel.addProduct()
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.mainFragment, MyMarketFragment())?.addToBackStack(null)
+                    ?.commit()
             }
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.mainFragment, MyMarketFragment())?.addToBackStack(null)
-                ?.commit()
         }
     }
 }

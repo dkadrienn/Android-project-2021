@@ -34,6 +34,7 @@ class UpdateProductViewModel(val context: Context, val repository: MarketReposit
             amount_type = updated.value!!.amount_type,
             price_type = updated.value!!.price_type
         )
+        Log.d(TAG, "New data " + request.toString())
         try {
             val result = repository.updateProduct(
                 token!!,
@@ -45,6 +46,7 @@ class UpdateProductViewModel(val context: Context, val repository: MarketReposit
                 request.amount_type,
                 request.price_type
             )
+            Log.d(TAG, "Result data " + request.toString())
             Toast.makeText(context, "Successfully edited", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             Log.d(TAG, "ProductUpdateViewModel - exception: ${e.toString()}")

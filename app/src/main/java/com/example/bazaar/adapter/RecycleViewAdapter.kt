@@ -29,10 +29,10 @@ class RecycleViewAdapter(
         val imageView_seller: ImageView = itemView.findViewById(R.id.sellerProfile)
         val imageView_state: ImageView = itemView.findViewById(R.id.itemState)
 
-            init {
-                itemView.setOnClickListener(this)
-                itemView.setOnLongClickListener(this)
-            }
+        init {
+            itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
+        }
 
         override fun onClick(p0: View?) {
             val current = list[bindingAdapterPosition]
@@ -51,7 +51,7 @@ class RecycleViewAdapter(
         fun onItemClick(product: Product)
     }
 
-    interface OnItemLongClickListener{
+    interface OnItemLongClickListener {
         fun onItemLongClick(product: Product)
     }
 
@@ -66,14 +66,15 @@ class RecycleViewAdapter(
     override fun onBindViewHolder(holder: RecycleViewViewHolder, position: Int) {
         val currentItem = list[position]
         holder.textView_name.text = currentItem.title.replace("\"", "")
-        holder.textView_price.text = currentItem.price_per_unit.replace("\"", "") + currentItem.price_type.replace("\"", "")
+        holder.textView_price.text =
+            currentItem.price_per_unit.replace("\"", "") + currentItem.price_type.replace("\"", "")
         holder.textView_seller.text = currentItem.username.replace("\"", "")
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
 
-        if (currentItem.is_active){
+        if (currentItem.is_active) {
             holder.imageView_state.setImageResource(R.drawable.ic_button_order_now)
-        } else{
+        } else {
             holder.imageView_state.setImageResource(R.drawable.ic_inactive)
         }
 

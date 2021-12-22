@@ -160,8 +160,8 @@ class ProductDetailFragment : BaseFragment() {
         val otherProfileFragment = OtherProfileFragment()
         sellerProfile.setOnClickListener {
             val bundle = bundleOf(
-                "username" to username,
-                "email" to otherUserEmail,
+                "username" to username!!.replace("\"", ""),
+                "email" to otherUserEmail!!.replace("\"", ""),
                 "phone_number" to otherUserPhoneNr
             )
             otherProfileFragment.arguments = bundle
@@ -175,12 +175,12 @@ class ProductDetailFragment : BaseFragment() {
         orderImageView = view.findViewById(R.id.buyProductButtonDetailPage)
         val addOrderFragment = AddOrderFragment()
         val bundle = bundleOf(
-            "username" to username,
+            "username" to username!!.replace("\"", ""),
             "creation_time" to creation_time,
-            "title" to title,
-            "price" to price,
-            "price_type" to price_type,
-            "unit" to unit
+            "title" to title!!.replace("\"", ""),
+            "price" to price!!.replace("\"", ""),
+            "price_type" to price_type!!.replace("\"", ""),
+            "unit" to unit!!.replace("\"", "")
         )
         addOrderFragment.arguments = bundle
         orderImageView.setOnClickListener {

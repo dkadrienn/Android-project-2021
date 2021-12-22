@@ -40,12 +40,12 @@ data class UpdatedProduct(
     var description: String = "",
     @SerializedName("title")
     var title: String = "",
-    @SerializedName("images")
-    var images: List<Image> = listOf(),
+//    @SerializedName("images")
+//    var images: List<Image> = listOf(),
     @SerializedName("creation_time")
-    var creation_time: Long = 0,
-    @SerializedName("messages")
-    var messages: List<String> = listOf()
+    var creation_time: Long = 0
+//    @SerializedName("messages")
+//    var messages: List<String> = listOf()
 )
 
 data class UpdateProductResponse(

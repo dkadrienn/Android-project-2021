@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -32,7 +31,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener, RecycleViewAdapter.OnItemLongClickListener {
+class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
+    RecycleViewAdapter.OnItemLongClickListener {
     private val TAG = this.javaClass.simpleName
     private var myName: String? = null
 
@@ -41,7 +41,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: RecycleViewAdapter
 
-    private lateinit var searchBar : SearchView
+    private lateinit var searchBar: SearchView
 
     private lateinit var myProducts: List<Product>
 
@@ -57,7 +57,8 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
         listViewModel = ViewModelProvider(this, factory).get(ProductListViewModel::class.java)
 
         val factoryRemove = RemoveProductViewModelFactory(requireContext(), MarketRepository())
-        removeViewModel = ViewModelProvider(this, factoryRemove).get(RemoveProductViewModel::class.java)
+        removeViewModel =
+            ViewModelProvider(this, factoryRemove).get(RemoveProductViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -69,8 +70,8 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
         recycler_view = view.findViewById(R.id.timeLineRecycleView)
         setupRecyclerView()
         listViewModel.products.observe(viewLifecycleOwner) {
-            myProducts = listViewModel.products.value!!.filter { it.username == myName }
-            adapter.setData( myProducts as ArrayList<Product>)
+            myProducts = listViewModel.products.value!!.reversed().filter { it.username == myName }
+            adapter.setData(myProducts as ArrayList<Product>)
             adapter.notifyDataSetChanged()
         }
         searchBar = view.findViewById(R.id.searchViewMyMarket)
@@ -115,20 +116,23 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
         super.onViewCreated(view, savedInstanceState)
         val addButton = view.findViewById<ImageView>(R.id.addButton)
         val addProductFragment = AddProductFragment()
-        addButton.setOnClickListener{
+        addButton.setOnClickListener {
             Log.d(TAG, "Clicked add")
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.mainFragment, addProductFragment)?.addToBackStack(null)
                 ?.commit()
         }
 
-        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 val searchText = p0!!.toLowerCase(Locale.getDefault())
                 Log.d(TAG, searchText)
-                if(searchText.isNotEmpty()){
-                    adapter.setData(ArrayList(myProducts.filter { it.title.toLowerCase(
-                        Locale.getDefault()).contains(searchText) }))
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(myProducts.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
                     adapter.notifyDataSetChanged()
                 }
                 return false
@@ -137,9 +141,12 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
             override fun onQueryTextChange(p0: String?): Boolean {
                 val searchText = p0!!.toLowerCase(Locale.getDefault())
                 Log.d(TAG, searchText)
-                if(searchText.isNotEmpty()){
-                    adapter.setData(ArrayList(myProducts.filter { it.title.toLowerCase(
-                        Locale.getDefault()).contains(searchText) }))
+                if (searchText.isNotEmpty()) {
+                    adapter.setData(ArrayList(myProducts.filter {
+                        it.title.toLowerCase(
+                            Locale.getDefault()
+                        ).contains(searchText)
+                    }))
                     adapter.notifyDataSetChanged()
                 }
                 return false
@@ -164,17 +171,17 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
         Log.d(TAG, "Click simple")
         val myProductDetailFragment = MyProductDetailFragment()
         val bundle = bundleOf(
-            "username" to product.username,
+            "username" to product.username.replace("\"", ""),
             "creation_time" to product.creation_time,
-            "title" to product.title,
-            "price" to product.price_per_unit,
-            "price_type" to product.price_type,
+            "title" to product.title.replace("\"", ""),
+            "price" to product.price_per_unit.replace("\"", ""),
+            "price_type" to product.price_type.replace("\"", ""),
             "is_active" to product.is_active,
-            "unit" to product.units,
-            "amount_type" to product.amount_type,
-            "description" to product.description,
+            "unit" to product.units.replace("\"", ""),
+            "amount_type" to product.amount_type.replace("\"", ""),
+            "description" to product.description.replace("\"", ""),
             "rating" to product.rating,
-            "product_id" to product.product_id
+            "product_id" to product.product_id.replace("\"", "")
         )
         myProductDetailFragment.arguments = bundle
         Log.d("OnProductClick", "Clicked" + product.product_id)
@@ -192,7 +199,7 @@ class MyMarketFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
                 if (it != null)
                     it.product_id = product.product_id
             }
-            lifecycleScope.launch{
+            lifecycleScope.launch {
                 removeViewModel.removeProduct()
                 adapter.notifyDataSetChanged()
 //            activity?.supportFragmentManager?.beginTransaction()
