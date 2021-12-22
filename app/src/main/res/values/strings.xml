@@ -49,4 +49,8 @@
     <string name="amount_type">Amount type</string>
     <string name="my_order">My order</string>
     <string name="send_my_order">Send my order</string>
+    <string name="owner">Owner</string>
+    <string name="customer">Customer</string>
+    <string name="status">status</string>
+    <string name="order_detail">Order detail</string>
 </resources>

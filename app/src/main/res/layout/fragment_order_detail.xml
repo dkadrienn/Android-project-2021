@@ -1,9 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.OrderDetailFragment">
+    android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/topBarProductDetailOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/fragment_base"/>
 
-</FrameLayout>
+    <ScrollView
+        android:id="@+id/scrollViewProductDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_below="@id/topBarProductDetailOrder">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".fragment.OrderDetailFragment">
+
+            <ImageView
+                android:id="@+id/productImageDetailPageOrder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/imageHeight"
+                android:layout_margin="@dimen/marginBetweenElements"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_new_product_image"/>
+
+            <TextView
+                android:id="@+id/statusDetailOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginBetweenElements"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productImageDetailPageOrder"
+                app:layout_constraintBottom_toTopOf="@id/ownerText"
+                android:hint="@string/status"
+                android:textColor="@color/mainBlue"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize"/>
+
+            <TextView
+                android:id="@+id/ownerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusDetailOrder"
+                android:text="@string/owner"
+                android:layout_marginStart="@dimen/marginBetweenElements"
+                android:layout_marginTop="@dimen/marginBetweenElements"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/sellerProfileDetailPageOrder"
+                android:layout_width="@dimen/profileSize"
+                android:layout_height="@dimen/profileSize"
+                android:src="@drawable/ic_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ownerText"
+                app:layout_constraintEnd_toStartOf="@id/sellerNameDetailPageOrder"
+                android:layout_marginStart="@dimen/marginBetweenElements" />
+
+            <TextView
+                android:id="@+id/sellerNameDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginBetweenElements"
+                app:layout_constraintStart_toEndOf="@id/sellerProfileDetailPageOrder"
+                app:layout_constraintTop_toTopOf="@id/sellerProfileDetailPageOrder"
+                android:textColor="@color/mainBg"
+                android:hint="@string/username"/>
+
+            <TextView
+                android:id="@+id/textCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sellerProfileDetailPageOrder"
+                android:text="@string/customer"
+                android:layout_marginStart="@dimen/marginBetweenElements"
+                android:layout_marginTop="@dimen/marginBetweenElements"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/nameProfileDetailPageOrder"
+                android:layout_width="@dimen/profileSize"
+                android:layout_height="@dimen/profileSize"
+                android:src="@drawable/ic_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textCustomer"
+                app:layout_constraintEnd_toStartOf="@id/nameDetailPageOrder"
+                android:layout_marginStart="@dimen/marginBetweenElements" />
+
+            <TextView
+                android:id="@+id/nameDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginBetweenElements"
+                app:layout_constraintStart_toEndOf="@id/nameProfileDetailPageOrder"
+                app:layout_constraintTop_toTopOf="@id/nameProfileDetailPageOrder"
+                android:textColor="@color/mainBg"
+                android:hint="@string/username"/>
+
+            <TextView
+                android:id="@+id/creationDateDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sellerProfileDetailPageOrder"
+                android:layout_margin="@dimen/marginBetweenElements"
+                android:textColor="@color/mainBg"/>
+
+            <TextView
+                android:id="@+id/productNameDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameProfileDetailPageOrder"
+                android:layout_margin="@dimen/marginBetweenElements"
+                android:textColor="@color/mainBg"
+                android:textSize="@dimen/detailProductNameSize"
+                android:hint="@string/title"/>
+
+            <TextView
+                android:id="@+id/priceTextDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginBetweenElements"
+                android:textColor="@color/mainBg"
+                android:textStyle="bold"
+                android:textSize="@dimen/amountProductNameSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productNameDetailPageOrder"
+                android:text="@string/price"/>
+
+            <TextView
+                android:id="@+id/priceDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginBetweenElements"
+                android:textColor="@color/mainBg"
+                android:textStyle="bold"
+                android:textSize="@dimen/titleTextSize"
+                app:layout_constraintStart_toEndOf="@id/priceTextDetailPageOrder"
+                app:layout_constraintTop_toTopOf="@id/priceTextDetailPageOrder"
+                android:hint="@string/price"/>
+
+            <TextView
+                android:id="@+id/availableTextOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/priceDetailPageOrder"
+                android:layout_marginStart="@dimen/marginBetweenElements"
+                android:text="@string/available_amount"
+                android:textColor="@color/mainBg"/>
+
+            <TextView
+                android:id="@+id/amountDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/availableTextOrder"
+                app:layout_constraintTop_toTopOf="@id/availableTextOrder"
+                android:textColor="@color/mainBg"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/detailDetailPageOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/availableTextOrder"
+                android:layout_margin="@dimen/marginBetweenElements"
+                android:textColor="@color/mainBg"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>
