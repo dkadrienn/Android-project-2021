@@ -47,7 +47,7 @@ class TimelineFragment : BaseFragment(), RecycleViewAdapter.OnItemClickListener,
         recycler_view = view.findViewById(R.id.timeLineRecycleView)
         setupRecyclerView()
         listViewModel.products.observe(viewLifecycleOwner) {
-            adapter.setData(listViewModel.products.value as ArrayList<Product>)
+            adapter.setData(listViewModel.products.value!!.reversed() as ArrayList<Product>)
             adapter.notifyDataSetChanged()
         }
         searchBar = view.findViewById(R.id.searchViewTimeline)

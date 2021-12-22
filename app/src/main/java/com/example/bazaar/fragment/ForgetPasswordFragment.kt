@@ -56,7 +56,6 @@ class ForgetPasswordFragment : Fragment() {
             }
             lifecycleScope.launch {
                 passwordResetViewModel.passwordReset()
-
             }
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.logFragment, LogInFragment())?.addToBackStack(null)

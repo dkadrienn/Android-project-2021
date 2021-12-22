@@ -116,7 +116,9 @@ class MyProductDetailFragment : BaseFragment() {
         titleTextView.apply { text = title!!.replace("\"", "") }
         priceTextView.apply { text = price!!.replace("\"", "") }
         priceTypeTextView.apply { text = price_type!!.replace("\"", "") }
-        priceAmountTextView.apply { text = price!!.replace("\"", "") + price_type!!.replace("\"", "") }
+        priceAmountTextView.apply {
+            text = price!!.replace("\"", "") + price_type!!.replace("\"", "")
+        }
         if (is_active) {
             isActiveImageView.setImageResource(R.drawable.ic_active)
         } else {

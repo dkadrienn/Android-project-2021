@@ -67,43 +67,55 @@ class OrderRecyclerViewAdapter(
         val currentItem = list[position]
         holder.imageView_seller.setImageResource(R.drawable.ic_avatar)
         holder.textView_seller.text = currentItem.username.replace("\"", "")
-        holder.textView_date.text = (" " + SimpleDateFormat("yyyy.MM.dd").format(currentItem.creation_time))
+        holder.textView_date.text =
+            (" " + SimpleDateFormat("yyyy.MM.dd").format(currentItem.creation_time))
         holder.textView_status.text = currentItem.status
         holder.textView_name.text = currentItem.title.replace("\"", "")
         holder.textView_description.text = currentItem.description.replace("\"", "")
-        holder.textView_amount.text = " " + currentItem.units.replace("\"", "") + currentItem.amount_type.replace("\"", "")
-        holder.textView_price.text = " " + currentItem.price_per_unit.replace("\"", "") + currentItem.price_type.replace("\"", "")
+        holder.textView_amount.text =
+            " " + currentItem.units.replace("\"", "") + currentItem.amount_type.replace("\"", "")
+        holder.textView_price.text = " " + currentItem.price_per_unit.replace(
+            "\"",
+            ""
+        ) + currentItem.price_type.replace("\"", "")
         holder.imageView_item.setImageResource(R.drawable.bg)
         holder.imageView_decline.setImageResource(R.drawable.ic_decline)
         holder.imageView_accept.setImageResource(R.drawable.ic_accept)
 
-        if(currentItem.status.contains("Incoming", ignoreCase = true) || currentItem.status.contains("open", ignoreCase = true)){
+        if (currentItem.status.contains(
+                "Incoming",
+                ignoreCase = true
+            ) || currentItem.status.contains("open", ignoreCase = true)
+        ) {
             holder.imageView_decline.visibility = View.VISIBLE
             holder.imageView_accept.visibility = View.VISIBLE
         }
 
-        if(currentItem.status.contains("Accepted", ignoreCase = true)){
+        if (currentItem.status.contains("Accepted", ignoreCase = true)) {
             holder.imageView_decline.visibility = View.GONE
             holder.imageView_accept.visibility = View.VISIBLE
         }
 
-        if(currentItem.status.contains("Declined", ignoreCase = true)){
+        if (currentItem.status.contains("Declined", ignoreCase = true)) {
             holder.imageView_decline.visibility = View.VISIBLE
             holder.imageView_accept.visibility = View.GONE
         }
 
-        if(currentItem.status.contains("Delivering", ignoreCase = true) || currentItem.status.contains("Delivered", ignoreCase = true)){
+        if (currentItem.status.contains(
+                "Delivering",
+                ignoreCase = true
+            ) || currentItem.status.contains("Delivered", ignoreCase = true)
+        ) {
             holder.imageView_decline.visibility = View.GONE
             holder.imageView_accept.visibility = View.GONE
         }
 
         //drop down for description
         holder.dropDownArrow.setOnClickListener {
-            if (holder.textView_description.visibility == View.GONE){
+            if (holder.textView_description.visibility == View.GONE) {
                 holder.dropDownArrow.setImageResource(R.drawable.ic_arrow_down)
                 holder.textView_description.visibility = View.VISIBLE
-            }
-            else{
+            } else {
                 holder.dropDownArrow.setImageResource(R.drawable.ic_arrow_up)
                 holder.textView_description.visibility = View.GONE
             }

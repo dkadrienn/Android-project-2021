@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -12,8 +15,6 @@ import com.example.bazaar.R
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.viewmodel.AddOrderViewModel
 import com.example.bazaar.viewmodel.AddOrderViewModelFactory
-import com.example.bazaar.viewmodel.LogInViewModel
-import com.example.bazaar.viewmodel.LogInViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -86,10 +87,9 @@ class AddOrderFragment : Fragment() {
         }
 
         sendOrderButton.setOnClickListener {
-            if(amountEditText.text.toString().toInt() > unit!!.toInt()){
+            if (amountEditText.text.toString().replace("\"", "").toInt() > unit!!.toInt()) {
                 Toast.makeText(context, "Wow, way too much amount!", Toast.LENGTH_LONG).show()
-            }
-            else{
+            } else {
                 addOrderViewModel.newOrder.value.let {
                     if (it != null) {
                         it.title = title!!
@@ -101,8 +101,8 @@ class AddOrderFragment : Fragment() {
                 }
                 lifecycleScope.launch {
                     addOrderViewModel.addOrder()
+                    activity?.supportFragmentManager?.popBackStack()
                 }
-                activity?.supportFragmentManager?.popBackStack()
             }
         }
     }

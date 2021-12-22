@@ -18,7 +18,6 @@ import com.example.bazaar.R
 import com.example.bazaar.repository.MarketRepository
 import com.example.bazaar.viewmodel.UpdateProductViewModel
 import com.example.bazaar.viewmodel.UpdateProductViewModelFactory
-import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
@@ -131,24 +130,24 @@ class EditProductFragment : Fragment() {
         val buttonLaunch = view.findViewById<Button>(R.id.buttonLaunchAddP)
 
         buttonLaunch.setOnClickListener {
-            Log.d(TAG, editProductViewModel.updated.value.toString())
             editProductViewModel.updated.value.let {
                 if (it != null) {
                     it.product_id = product_id!!.replace("\"","")
                     it.price_per_unit = priceEditText.text.toString().toDouble()
                     it.is_active = toggleButton.isChecked
-                    it.title = titleEditText.text.toString()
-                    it.rating = ratingEditText.text.toString()
-                    it.amount_type = unitTypeEditText.text.toString()
-                    it.price_type = priceTypeEditText.text.toString()
+                    it.title = titleEditText.text.toString()!!.replace("\"","")
+                    it.rating = ratingEditText.text.toString()!!.replace("\"","")
+                    it.amount_type = unitTypeEditText.text.toString()!!.replace("\"","")
+                    it.price_type = priceTypeEditText.text.toString()!!.replace("\"","")
                 }
             }
+            Log.d(TAG, editProductViewModel.updated.value.toString())
             lifecycleScope.launch {
                 editProductViewModel.updateProduct()
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.mainFragment, MyMarketFragment())?.addToBackStack(null)
+                    ?.commit()
             }
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.mainFragment, MyMarketFragment())?.addToBackStack(null)
-                ?.commit()
         }
     }
 
